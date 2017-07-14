@@ -31,7 +31,7 @@ class StdScore:
             if i == 0:
                 self.chords.append(StdChord.Chord(bar_tracks))
                 print("success!")
-                bar_tracks.clear()
+                bar_tracks = []
 
         return
 

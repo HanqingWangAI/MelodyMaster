@@ -1,3 +1,5 @@
+NOTENUM = 12
+
 class Note:
     '''
         pitch (int):
@@ -10,13 +12,17 @@ class Note:
     pitch = 0
     duration = []
 
-    def getNoteName(self):
-
-        return
+    def getNoteId(self):
+        return (self.pitch % 12)
 
     def getOctave(self):
+        return (self.pitch / 12)
 
-        return
+    def isNote(self):
+        return (self.pitch >= 0)
+
+    def getTime(self):
+        return (1.0*self.duration[0]/self.duration[1])
 
     def __init__(self, pitch_, duration_=[1,1]):
         self.pitch = pitch_

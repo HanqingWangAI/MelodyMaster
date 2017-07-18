@@ -1,0 +1,43 @@
+#FF333333
+
+
+《combobox 背景颜色》
+        <LinearGradientBrush x:Key="ComboBox.Static.Background" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#FF212121" Offset="0.0"/>
+            <GradientStop Color="#FF212121" Offset="1.0"/>
+        </LinearGradientBrush>
+《combobox 点击边框颜色》
+ <ControlTemplate TargetType="{x:Type TextBox}">
+                        <ScrollViewer x:Name="PART_ContentHost" Background="Red" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    </ControlTemplate>
+
+
+《combobox 的mouseover 颜色》
+  <LinearGradientBrush x:Key="ComboBox.MouseOver.Background" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#FF333333" Offset="0.0"/>
+            <GradientStop Color="#FF333333" Offset="1.0"/>
+        </LinearGradientBrush>
+
+《item颜色》
+<Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+                                        <Rectangle x:Name="opaqueRect" Fill="#FF333333" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
+                                    </Canvas>
+
+《item点击颜色》
+        <LinearGradientBrush x:Key="ComboBox.Pressed.Background" EndPoint="0,1" StartPoint="0,0">
+            <GradientStop Color="#FF5B5B5B" Offset="0.0"/>
+            <GradientStop Color="#FF5B5B5B" Offset="1.0"/>
+        </LinearGradientBrush>
+
+《item小箭头颜色》
+ <SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="#FFBDBDBD"/>
+《Items鼠标悬浮颜色》
+<Setter Property="Background" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewHoverFocus.Background}"/>
+<Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource ComboBoxItem.ItemsviewHoverFocus.Border}"/>
+
+Slider
+《横条颜色》
+ </ControlTemplate>
+        <SolidColorBrush x:Key="SliderThumb.Track.Border" Color="Black"/>
+        <SolidColorBrush x:Key="SliderThumb.Track.Background" Color="Black"/>
+        <Style x:Key="RepeatButtonTransparent" TargetType="{x:Type RepeatButton}">

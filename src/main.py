@@ -2,6 +2,8 @@ import midi
 
 from collections import deque
 from utils import *
+import pickle
+import sys
 
 path = '../233.mid'
 
@@ -36,12 +38,12 @@ def SolveMidi(path):
     beats = []
     te = res
     cnt = 0
-
-    while te % 2 == 0 and cnt < 4:
+    while te % 2 == 0 and cnt < 6:
         te /= 2
         cnt += 1
 
     cnt = 1
+    #print 'te',te
     while cnt*te <= res*4:
         beats.append(cnt*te)
         cnt += 1
@@ -49,7 +51,10 @@ def SolveMidi(path):
     n_track = 0
     max_track_length = 0
     tracks = []
+    length_bar = 4 * res
+    length_pitch = 4 * res
     for track_ in pattern:
+        #print 'track',n_track
         Q = deque()
         sections = 0
         track = []
@@ -57,70 +62,132 @@ def SolveMidi(path):
         n_track += 1
         tick = 0
         last = 0
-        current_bar = 0
-        length_bar = 4*res
+        last_tempo = 0
+        section = []
         for event in track_:
-            if event.name == 'Time Signature':
-                length_bar = res * event.numerator / event.denominator
-                #print 'length_bar',length_bar
 
-            if event.name not in ['Note On','Note Off']:
-                continue
+            if event.name == 'Time Signature':
+                length_bar = res * event.numerator * 4 / event.denominator
+                #print 'length_bar',length_bar,'numerator',event.numerator,'denominator',event.denominator
+
+
 
             tick += event.tick
-            current_bar += event.tick
 
+            #if n_track == 1:
+            #    print 'event', event, 'section', sections,'tick',tick
+
+            if event.name not in ['Note On', 'Note Off', 'Set Tempo']:
+                continue
             # if it is an Off Event, mark this pitch
-            if event.name == 'Note Off' or event.velocity == 0:
-                temp = Q.popleft()
-                length = tick - temp[1]
-                beat = findBeat(length,beats)
-                last = beat - length
-                track.append(Note(event.pitch, fraction(beat,length_bar)))
-                #print >>fp, event.pitch, fraction(beat,length_bar)
+            if event.name == 'Note Off' or (event.name == 'Note On' and event.velocity == 0):
+                last_tempo = 0
+                while True:
+                    temp = Q.popleft()
+                    if temp[0] == event.pitch:
+                        break
+                    Q.append(temp)
+
+                last = 0
+                last_end = temp[1]
+                pos = int(last_end/length_bar)
+                while True:
+                    if tick < length_bar*(pos+1):
+                        break
+
+                    if pos < sections:
+                        track[pos].append(Note(event.pitch,fraction(length_bar*(pos+1)-last_end,length_pitch)))
+                    else:
+                        section.append(Note(event.pitch,fraction(length_bar*(pos+1)-last_end,length_pitch)))
+                        track.append(section)
+                        section = []
+                        sections += 1
+
+                    last_end = length_bar*(pos+1)
+                    pos += 1
+
+                length = tick - last_end
+
+                if length != 0:
+                    beat = findBeat(length,beats)
+                    last = beat - length
+
+
+                    if pos < sections:
+                        track[pos].append(Note(event.pitch, fraction(beat, length_pitch)))
+                    else:
+                        section.append(Note(event.pitch, fraction(beat,length_pitch)))
+
+                # if it just reach the end of a section
+                if (tick+last)%length_bar < 2 and (tick+last)/length_bar > sections:
+                    track.append(section)
+                    sections += 1
+                    section = []
+
 
             # if it is an On Event
             if event.name == 'Note On' and event.velocity != 0:
-                Q.append([event.pitch,tick])
-                remain = event.tick - last
+                Q.append([event.pitch, tick])
+                remain = event.tick+last_tempo - last
+                last_tempo = 0
                 last = 0
+                #if remain > 0:
+                #    print 'section',sections,'remain',remain
 
                 # find the end of section
-                while True:
-                    temp = current_bar - remain
-                    temp = length_bar - temp
-                    if remain >= temp and remain > 0 and temp > 0:
-                        track.append(Note(-2,fraction(temp, length_bar)))
-                        #print >>fp, -2,fraction(temp,length_bar)
+                while remain > 0:
+                    temp = tick - remain
+                    temp = length_bar - temp % length_bar
+                    if remain >= temp and temp > 0:
+                        section.append(Note(-2, fraction(temp, length_pitch)))
                         remain -= temp
-                    elif remain < temp and remain > 0:
-                        track.append(Note(-2,fraction(remain,length_bar)))
-                        #print >>fp, -2, fraction(remain,length_bar)
+                        track.append(section)
+                        section = []
+                        sections += 1
+
+                    elif remain < temp:
+                        section.append(Note(-2,fraction(remain,length_pitch)))
                         remain = 0
-                    if current_bar < length_bar:
-                        break
-                    track.append(noteEnd)
-                    #print>>fp, 'section end'
-                    sections += 1
-                    current_bar -= length_bar
-        if current_bar != 0:
-            remain = length_bar - current_bar
-            track.append(Note(-2,fraction(remain,length_bar)))
-            track.append(noteEnd)
+
+            if event.name == 'Set Tempo':
+                last_tempo += event.tick
+
+        if (tick-last_tempo)%length_bar != 0 and (tick-last_tempo)%length_bar != 1:
+            remain = length_bar - (tick-last_tempo)%length_bar
+            #if n_track == 1:
+            #    print 'tick',tick,'remain',remain,'last_tempo',last_tempo
+            section.append(Note(-2,fraction(remain,length_pitch)))
+            track.append(section)
+            section = []
+            #track.append(Note(-2,fraction(remain,length_pitch)))
+            #track.append(noteEnd)
             sections += 1
 
         if sections != 0:
             tracks.append(track)
             max_track_length = max(max_track_length,sections) # mark the maximum length of track
 
+
     for track in tracks:
         length = len(track)
+        #print length, max_track_length
         while length < max_track_length:
-            track.append(Note(-2,fraction(length_bar,length_bar)))
-            track.append(noteEnd)
+            section = []
+            section.append(Note(-2,fraction(length_bar,length_pitch)))
+            #section.append(noteEnd)
+            track.append(section)
             length += 1
+    #print 'max_track',max_track_length
+    ret = []
+    for track in tracks:
+        _t = []
+        for section in track:
+            for note in section:
+                _t.append(note)
+            _t.append(noteEnd)
+        ret.append(_t)
 
-    return tracks
+    return ret
 
 def test():
     pattern = midi.read_midifile(path)
@@ -135,30 +202,65 @@ def test():
         print tick
 
 
-folder = 'D:/Files/Project/melody-master/python-midi-master/good songs/test'
+folder = 'D:\Files\Project\melody-master\python-midi-master\good songs\Mozart'
 
-def readfolder():
+def readfolder(filename):
     import os
+    from datetime import datetime
     filelist = [file for file in os.listdir(folder)]
     if not os.path.exists("test"):
         os.makedirs("test")
+    dic = {}
+    songkey = []
+    songchord = []
+    cnt = 0
     for file in filelist:
         file_path = os.path.join(folder,file)
-        #score = StdScore(SolveMidi(file_path))
-        tracks = SolveMidi(file_path)
+
+        score = StdScore(SolveMidi(file_path))
+        #tracks = score.tracks
+
+        #if cnt == 0:
+        #    print score.getChordFeature()
+        songkey.append(score.getKeyFeature())
+        songchord.append(score.getChordFeature())
+        # with open("test/%s.txt"%file,"w") as fp:
+        #     cnt_track = 0
+        #     #print "============="
+        #     for track in tracks:
+        #         cnt = 0
+        #
+        #         for event in track:
+        #             if event == noteEnd:
+        #                 cnt += 1
+        #         #print 'section',cnt
+        #         cnt = 0
+        #         print >>fp,'Track',cnt_track
+        #         for Note in track:
+        #             if Note.pitch == -1:
+        #                 print >>fp,'Section End',cnt
+        #                 cnt += 1
+        #             else:
+        #                 print >>fp,Note.pitch,Note.duration
+        #         cnt_track += 1
+
+        # with open("feature/%s.txt" % file, "w") as fp:
+        #     print >>fp,score.getChordFeature()
+        #     print >>fp,"==========================================\n\n\n\n"
+        #     print >>fp,score.getKeyFeature()
         print file
-        with open("test/%s.txt"%file,"w") as fp:
-            cnt_track = 0
-            for track in tracks:
-                print >>fp,'Track',cnt_track
-                for Note in track:
-                    if Note.pitch == -1:
-                        print >>fp,'Section End'
-                    else:
-                        print >>fp,Note.pitch,Note.duration
+        cnt += 1
+    dic['X'] = songkey
+    dic['Y'] = songchord
+    with open("%s.pkl"%filename,"wb") as fp:
+       pickle.dump(dic,fp,-1)
+
+    #sc = StdScore([[],[]])
+    #print len(sc.getKeyFeature())
 
 if __name__ == '__main__':
-    readfolder()
+    filename = sys.argv[1]
+    readfolder(filename)
     #tracks = SolveMidi(path)
     #score = StdScore(tracks)
 

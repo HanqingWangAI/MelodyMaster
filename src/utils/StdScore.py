@@ -4,18 +4,19 @@ import StdNote
 
 class StdScore:
     #property
-    tracks = []
+    #tracks = []
     '''
     1st axis: track
     2nd axis: notes (-1 ending)
     '''
 
-    keyTrack = []
-    chords = []
+    #keyTrack = []
+    #chords = []
 
     def __init__(self, all_tracks):
         self.tracks = all_tracks
-
+        self.keyTrack = []
+        self.chords = []
         chords_track = all_tracks
         chords_num = len(all_tracks)
         ptr = [0 for _ in range(chords_num)]

@@ -9,8 +9,6 @@ class Note:
                 first key:  numerator
                 second key: denominator
     '''
-    pitch = 0
-    duration = []
 
     def getNoteId(self):
         return (self.pitch % 12)

@@ -1,9 +1,6 @@
 import StdNote
 
 class Chord:
-    notes=[]
-
-    name = ''
 
     def getChordSet(self):
     	chordSet = [0 for _ in range(StdNote.NOTENUM)]
@@ -24,7 +21,9 @@ class Chord:
     	return chordTime
 
     def __init__(self, chord_tracks):
-    	for track in chord_tracks:
-    		for note in track:
-    			self.notes.append(note)
-        return
+		self.notes = []
+		self.name = ''
+		for track in chord_tracks:
+			for note in track:
+				self.notes.append(note)
+		return

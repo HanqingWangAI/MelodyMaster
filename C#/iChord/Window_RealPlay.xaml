@@ -1,0 +1,103 @@
+﻿<Window x:Class="iChord.Window_RealPlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:iChord"
+        mc:Ignorable="d"
+        Title="Window_RealPlay" Height="415" Width="800">
+    <Grid>
+        <Grid Margin="0,0,0.333,-0.333" Visibility="Hidden">
+            <!--Grid for realtime demonstration-->
+            <ScrollViewer x:Name="sv_RealPlay" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <StackPanel x:Name="sp_RealPlay" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
+        </Grid>
+
+        <Grid HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
+            <StackPanel HorizontalAlignment="Left"  VerticalAlignment="Stretch" Width="100">
+                <Button Margin="0,1" Content="Play"  Height="50" Click="playButton_Click" BorderThickness="0" FontFamily="MV Boli"></Button>
+                <ComboBox x:Name="comboBox_ToneChange0" Height="70"  BorderThickness="0" Margin ="0,1" SelectedIndex="0" >
+                    <ComboBoxItem x:Name="box00_ToneChange1" Content="钢琴" Selected="box00_ToneChange1_Selected"  />
+                    <ComboBoxItem x:Name="box00_ToneChange2" Content="风琴"  />
+                    <ComboBoxItem x:Name="box00_ToneChange3" Content="水晶"  />
+                    <ComboBoxItem x:Name="box00_ToneChange4" Content="吉他"  />
+                    <ComboBoxItem x:Name="box00_ToneChange7" Content="小提琴"  />
+                    <ComboBoxItem x:Name="box00_ToneChange8" Content="长笛"  />
+                    <ComboBoxItem x:Name="box00_ToneChange9" Content="双簧管" />
+                    <ComboBoxItem x:Name="box00_ToneChange10" Content="唢呐"  />
+                    <ComboBoxItem x:Name="box00_ToneChange5" Content="随机乐器" />
+                    <ComboBoxItem x:Name="box00_ToneChange6" Content="静音"  />
+                </ComboBox>
+                <ComboBox x:Name="comboBox_ToneChange1"  SelectedIndex="0" HorizontalAlignment="Stretch" Height="70" Margin="0,1,0,0" VerticalAlignment="Top" Background="#66AAAAAA" BorderThickness="0" >
+                    <ComboBoxItem x:Name="box11_ToneChange1" Content="钢琴"    />
+                    <ComboBoxItem x:Name="box11_ToneChange2" Content="风琴" />
+                    <ComboBoxItem x:Name="box11_ToneChange3" Content="水晶" />
+                    <ComboBoxItem x:Name="box11_ToneChange4" Content="吉他"   />
+                    <ComboBoxItem x:Name="box11_ToneChange6" Content="小提琴"  />
+                    <ComboBoxItem x:Name="box11_ToneChange7" Content="长笛"   />
+                    <ComboBoxItem x:Name="box11_ToneChange8" Content="双簧管" />
+                    <ComboBoxItem x:Name="box11_ToneChange9" Content="唢呐" />
+                    <ComboBoxItem x:Name="box11_ToneChange5" Content="随机乐器"  />
+                </ComboBox>
+                <ComboBox x:Name="comboBox_ToneChange2"  SelectedIndex="0" HorizontalAlignment="Stretch" Height="70" Margin="0,1,0,0" VerticalAlignment="Top"  BorderThickness="0" >
+                    <ComboBoxItem x:Name="box22_ToneChange1" Content="钢琴"   />
+                    <ComboBoxItem x:Name="box22_ToneChange2" Content="风琴"   />
+                    <ComboBoxItem x:Name="box22_ToneChange3" Content="水晶" />
+                    <ComboBoxItem x:Name="box22_ToneChange4" Content="吉他" />
+                    <ComboBoxItem x:Name="box22_ToneChange6" Content="小提琴" />
+                    <ComboBoxItem x:Name="box22_ToneChange7" Content="长笛" />
+                    <ComboBoxItem x:Name="box22_ToneChange8" Content="双簧管"   />
+                    <ComboBoxItem x:Name="box22_ToneChange9" Content="唢呐"  />
+                    <ComboBoxItem x:Name="box22_ToneChange5" Content="随机乐器"  />
+                </ComboBox>
+                <ComboBox x:Name="comboBox_ToneChange3"   SelectedIndex="0" HorizontalAlignment="Stretch" Height="70" Margin="0,1,0,0" VerticalAlignment="Top" Background="#66AAAAAA" BorderThickness="0">
+                    <ComboBoxItem x:Name="box33_ToneChange1" Content="钢琴" />
+                    <ComboBoxItem x:Name="box33_ToneChange2" Content="风琴"  />
+                    <ComboBoxItem x:Name="box33_ToneChange3" Content="水晶"  />
+                    <ComboBoxItem x:Name="box33_ToneChange4" Content="吉他"   />
+                    <ComboBoxItem x:Name="box33_ToneChange6" Content="小提琴"  />
+                    <ComboBoxItem x:Name="box33_ToneChange7" Content="长笛"   />
+                    <ComboBoxItem x:Name="box33_ToneChange8" Content="双簧管"  />
+                    <ComboBoxItem x:Name="box33_ToneChange9" Content="唢呐"  />
+                    <ComboBoxItem x:Name="box33_ToneChange5" Content="随机乐器" />
+                </ComboBox>
+                <Button Visibility="Hidden" Margin="0,1" Content="!"  Height="50" Click="playButton_Click" BorderThickness="0" FontFamily="Wingdings" FontSize="24"></Button>
+            </StackPanel>
+            <Grid Margin="100,0,0,337.5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock TextAlignment="Center"   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFE5E5E5" ><Run/><LineBreak/><Run Text="正常的"/></TextBlock>
+                <TextBlock TextAlignment="Center" Grid.Column="1"   HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFE5E5E5" ><Run/><LineBreak/><Run Text="活泼的"/></TextBlock>
+                <TextBlock TextAlignment="Center" Grid.Column="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFE5E5E5" ><Run/><LineBreak/><Run Text="深情"/><Run Text="的"/></TextBlock>
+                <TextBlock TextAlignment="Center" Grid.Column="3"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFE5E5E5" ><Run/><LineBreak/><Run Text="静音"/></TextBlock>
+                <TextBlock TextAlignment="Center" Grid.Column="4"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFE5E5E5" ><Run/><LineBreak/><Run Text="壮丽的"/></TextBlock>
+                <TextBlock TextAlignment="Center" Grid.Column="5"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FFE5E5E5" ><Run/><LineBreak/><Run Text="淘气的"/></TextBlock>
+            </Grid>
+            <Grid Margin="100,50,0.333,0" x:Name="gridForRealPlay">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="74.667"/>
+                    <RowDefinition Height="71*"/>
+                    <RowDefinition Height="77*"/>
+                    <RowDefinition Height="63*"/>
+                    <RowDefinition Height="49*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Window>

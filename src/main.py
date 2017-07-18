@@ -202,7 +202,7 @@ def test():
         print tick
 
 
-folder = 'D:\Files\Project\melody-master\python-midi-master\good songs\Mozart'
+folder = 'D:\Files\Project\melody-master\python-midi-master\good songs/test'
 
 def readfolder(filename):
     import os
@@ -244,10 +244,10 @@ def readfolder(filename):
         #                 print >>fp,Note.pitch,Note.duration
         #         cnt_track += 1
 
-        # with open("feature/%s.txt" % file, "w") as fp:
-        #     print >>fp,score.getChordFeature()
-        #     print >>fp,"==========================================\n\n\n\n"
-        #     print >>fp,score.getKeyFeature()
+        with open("feature/%s.txt" % file, "w") as fp:
+            print >>fp,score.getChordFeature()
+            print >>fp,"==========================================\n\n\n\n"
+            print >>fp,score.getKeyFeature()
         print file
         cnt += 1
     dic['X'] = songkey

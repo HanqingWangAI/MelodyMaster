@@ -298,7 +298,38 @@ namespace iChord
             }
             return result;
         }
+        public string rnnChordGenertor(string inStr)//','分隔开音符传递进来
+        {
+            string outStr = "";
+            //outStr = cnnFunction();
+            var RNN = new Csharp2Python();
+            outStr = RNN.run(inStr);
+            
+            //if (splitedStr[i] != "")//防止出现  最后一个和弦（split函数多余出来的）对应的旋律是空的
+            //    outStr += chordFeedback(originTohandle(splitedStr[i++])) + " ";
 
+            int i = 0;
+            //最后两个和弦为 G C
+            if (i > 3)//有4个和弦时
+            {
+                int len = outStr.Length, k = 0, j;
+                for (j = len - 1; j > 0;)
+                {
+                    if (k > 1) break;
+                    if (outStr[j] == ' ')
+                    {
+                        k++;
+                        j--;
+                    }
+                    while (outStr[j] != ' ')
+                        j--;
+                }
+                outStr = outStr.Substring(0, j);
+                outStr += " G C ";
+            }
+
+            return outStr;
+        }
         public string multiChordGenertor(string inStr)//','分隔开音符传递进来
         {
             string outStr = "";

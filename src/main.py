@@ -82,11 +82,15 @@ def SolveMidi(path):
             # if it is an Off Event, mark this pitch
             if event.name == 'Note Off' or (event.name == 'Note On' and event.velocity == 0):
                 last_tempo = 0
-                while True:
+                count = 0
+                while count <= len(Q):
                     temp = Q.popleft()
                     if temp[0] == event.pitch:
                         break
                     Q.append(temp)
+                    count += 1
+                if count>=len(Q):
+                    continue
 
                 last = 0
                 last_end = temp[1]
@@ -202,9 +206,9 @@ def test():
         print tick
 
 
-folder = 'D:\Files\Project\melody-master\python-midi-master\good songs/test'
+folder = 'D:/Files/Project/melody-master/python-midi-master/good songs/RenameData'
 
-def readfolder(filename):
+def readfolder(filename,ratio=0.8):
     import os
     from datetime import datetime
     filelist = [file for file in os.listdir(folder)]
@@ -214,11 +218,12 @@ def readfolder(filename):
     songkey = []
     songchord = []
     cnt = 0
-    for file in filelist:
+    length = len(filelist)
+    for file in filelist[0:int(length*ratio)]:
+        print file
         file_path = os.path.join(folder,file)
-
         score = StdScore(SolveMidi(file_path))
-        #tracks = score.tracks
+        tracks = score.tracks
 
         #if cnt == 0:
         #    print score.getChordFeature()
@@ -244,19 +249,33 @@ def readfolder(filename):
         #                 print >>fp,Note.pitch,Note.duration
         #         cnt_track += 1
 
-        with open("feature/%s.txt" % file, "w") as fp:
-            print >>fp,score.getChordFeature()
-            print >>fp,"==========================================\n\n\n\n"
-            print >>fp,score.getKeyFeature()
-        print file
+        # with open("feature/%s.txt" % file, "w") as fp:
+        #     print >>fp,score.getChordFeature()
+        #     print >>fp,"==========================================\n\n\n\n"
+        #     print >>fp,score.getKeyFeature()
+
         cnt += 1
     dic['X'] = songkey
     dic['Y'] = songchord
-    with open("%s.pkl"%filename,"wb") as fp:
+    with open("%s_train.pkl"%filename,"wb") as fp:
        pickle.dump(dic,fp,-1)
 
-    #sc = StdScore([[],[]])
-    #print len(sc.getKeyFeature())
+
+    dic = {}
+    songkey = []
+    songchord = []
+    for file in filelist[int(length*ratio):length]:
+        print file
+        file_path = os.path.join(folder, file)
+        score = StdScore(SolveMidi(file_path))
+        songkey.append(score.getKeyFeature())
+        songchord.append(score.getChordFeature())
+
+    dic['X'] = songkey
+    dic['Y'] = songchord
+    with open("%s_train.pkl"%filename,"wb") as fp:
+        pickle.dump(dic,fp,-1)
+
 
 if __name__ == '__main__':
     filename = sys.argv[1]

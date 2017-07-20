@@ -18,7 +18,7 @@ namespace iChord
         /// </summary>
         /// <param name="python"></param>
         /// <param name="myPythonApp"></param>
-        public Csharp2Python(string python = @"D:\Python35\python.exe", string myPythonApp = @"C:\Users\v-zhou\Desktop\Hackthon\MelodyMaster\RNN.py")
+        public Csharp2Python(string python = @"D:\Programs\Python27\python.exe", string myPythonApp = @"D:\liuchang\Projects\Hackathon\Source\MelodyMaster\src\utils\RNN.py")
         {
             Python = python;
             MyPythonApp = myPythonApp;
@@ -46,7 +46,7 @@ namespace iChord
             myProcess.Start();
 
             StreamReader myStreamReader = myProcess.StandardOutput;
-            string myString = myStreamReader.ReadLine();
+            string myString = myStreamReader.ReadToEnd();
 
             myProcess.WaitForExit();
             myProcess.Dispose();

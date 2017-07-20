@@ -29,6 +29,7 @@ class Note:
         noteName = midiNoteRelation[self.getNoteId()] + str(self.getOctave()) + str(self.duration[0]) + str(self.duration[1])
         return noteName
 
+    x = [1,2,3]
 
     def __init__(self, pitch_, duration_=[1, 1]):
         self.pitch = pitch_

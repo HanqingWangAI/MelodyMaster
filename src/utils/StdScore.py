@@ -80,3 +80,7 @@ if __name__ == "__main__":
     # print(score.getChordFeature())
     print(note1.getReadableNote())
     print(chord1.getReadableChord())
+
+    note2.x[0] = 2
+    print(note1.x)
+    print(note2.x)

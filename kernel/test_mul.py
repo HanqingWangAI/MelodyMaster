@@ -6,9 +6,6 @@ from time import clock
 import numpy as np
 import data
 
-#labels = ["lane_keeping", "left_post_lane_change", "left_pre_lane_change", \
-#"right_post_lane_change", "right_pre_lane_change"]
-
 #class_num = 6
 time_step = 8
 LSTM_unit = 128
@@ -29,25 +26,6 @@ biases={
         'in':tf.Variable(tf.constant(1.0,shape=[LSTM_unit,])),
         'out':tf.Variable(tf.constant(1.0,shape=[1,]))
         }
-
-def get_train_data(batch_size=60,time_step=10):
-    data = cPickle.load(open("train_data_didi.pik", 'r'))
-    train_x = data['features']
-    train_y = data['labels']
-    train_x = train_x.swapaxes(0,1)
-    train_y = train_y.swapaxes(0,1)
-    new_train_y = train_y[:,0]
-    new_train_y = new_train_y[:,np.newaxis]
-    #train_y = train_y[:,:,np.newaxis]
-    #train_y = np.zeros((raw_y.shape[0], raw_y.shape[1], class_num), dtype = np.float32)
-    batch_index = []
-    for i in range(len(train_x)):
-        if i % batch_size == 0:
-            batch_index.append(i)
-        # for j in range(time_step):
-        #     train_y[i,j,raw_y[i,j]] = 1
-    batch_index.append(len(train_x)-1)
-    return batch_index, train_x, train_y
 
 def lstm(X): 
     batch_size=tf.shape(X)[0]
@@ -100,26 +78,11 @@ def lstm(X):
     #output=tf.reshape(output_rnn,[-1,LSTM_unit])
 
 
-    # fcn_w = tf.get_variable(
-    #     "fcn_w", [LSTM_unit, fc_unit], dtype=tf.float32)
-    # fcn_b = tf.get_variable("fcn_b", [fc_unit], dtype=tf.float32) 
-    # fc = tf.matmul(output, fcn_w) + fcn_b
-    # fc_out = tf.reshape(fc, [-1,time_step*fc_unit])
-
-    # softmax_w = tf.get_variable(
-    #     "softmax_w", [num_steps*fc_unit, class_num], dtype=tf.float32)
-    # softmax_b = tf.get_variable("softmax_b", [class_num], dtype=tf.float32)
-
-    # logits = tf.nn.softmax(tf.matmul(fc_out, softmax_w) + softmax_b)
-
     softmax_w = tf.get_variable(
         "softmax_w", [LSTM_unit, output_size], dtype=tf.float32)
     softmax_b = tf.get_variable("softmax_b", [output_size], dtype=tf.float32)
     logits = tf.nn.sigmoid(tf.matmul(output, softmax_w) + softmax_b)
 
-    #w_out=weights['out']
-    #b_out=biases['out']
-    #pred=tf.matmul(output,w_out)+b_out
     return logits,final_states
 
 def train_lstm(batch_size=80,time_step=8):
@@ -140,25 +103,6 @@ def train_lstm(batch_size=80,time_step=8):
     logits,_=lstm(X)
     X_shape = X.get_shape()
     print('success')
-    #loss
-    #loss=tf.reduce_mean(tf.square(tf.reshape(pred,[-1])-tf.reshape(Y, [-1])))
-    #loss = -tf.reduce_sum(tf.reshape(Y,[-1,class_num])*tf.log(logits))
-
-    # loss_list = []
-    # for i in range(batch_size):
-    #     for j in range(time_step):
-    #         v = math.e**(-2*(time_step-1-j))
-    #         loss_list.append(v)
-    # loss_weight = tf.constant(loss_list)
-
-    # loss_weight = tf.ones([batch_size])
-
-    # loss = tf.contrib.legacy_seq2seq.sequence_loss_by_example(
-    #     [logits],
-    #     [tf.reshape(Y, [-1])],
-    #     [loss_weight],
-    #     class_num)
-    #loss = tf.nn.sparse_softmax_cross_entropy_with_logits(logits = logits, labels = tf.reshape(Y,[-1]))
 
     reshapeY = tf.reshape(Y, [-1, output_size])
     loss = -tf.reduce_sum(((reshapeY*tf.log(logits + 1e-9)) + ((1-reshapeY) * tf.log(1 - logits + 1e-9))), name='xentropy')
@@ -170,9 +114,6 @@ def train_lstm(batch_size=80,time_step=8):
     correct_pred = tf.equal(output_with_threshold, Y_with_threshold)
     accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 
-    #cost = tf.reduce_sum(loss) / batch_size
-    #tf.summary.scalar('loss', cost)
-    #lr = tf.Variable(0.0001, trainable=False)
     tvars = tf.trainable_variables()
     grads,_ = tf.clip_by_global_norm(tf.gradients(cost, tvars), 5)
     optimizer = tf.train.AdamOptimizer()
@@ -211,8 +152,6 @@ def train_lstm(batch_size=80,time_step=8):
                 #print(logits_test[0:8]>0.3)
                 #for _ in range(8):
                 #    print(test_y[0][_])
-            #if i % 20==0:
-                #print("save:",saver.save(sess,'stock2.model',global_step=i))
 
 def predict(key_feature):
     X=tf.placeholder(tf.float32, shape=[None,time_step,input_size])

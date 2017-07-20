@@ -1,18 +1,18 @@
-﻿iChord
+﻿﻿iChord
 
 
 winexe
 C#
 .cs
-D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\obj\Debug\
+C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\
 iChord
 none
 false
 DEBUG;TRACE
-D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\App.xaml
+C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\App.xaml
 3-1033760319
 
-28891768064
+28-632509158
 17585861683
 combobox_Chord.xaml;MainWindow.xaml;Window_RealPlay.xaml;
 

@@ -5,10 +5,7 @@ from utils import *
 import pickle
 import sys
 
-path = '../233.mid'
-
-pattern = midi.read_midifile(path)
-
+inf = 10000000
 
 
 def findBeat(beat, beats):
@@ -33,7 +30,11 @@ def SolveMidi(path):
     :return:     the tracks of this song
 
     '''
-    pattern = midi.read_midifile(path)
+    try:
+        pattern = midi.read_midifile(path)
+    except Exception,ex:
+        print ex
+        return None
     res = pattern.resolution
     beats = []
     te = res
@@ -60,6 +61,7 @@ def SolveMidi(path):
         track = []
         #print >> fp,'Track:',n_track
         n_track += 1
+        #print 'Track:',n_track
         tick = 0
         last = 0
         last_tempo = 0
@@ -73,7 +75,8 @@ def SolveMidi(path):
 
 
             tick += event.tick
-
+            if tick > inf:
+                return None
             #if n_track == 1:
             #    print 'event', event, 'section', sections,'tick',tick
 
@@ -83,13 +86,14 @@ def SolveMidi(path):
             if event.name == 'Note Off' or (event.name == 'Note On' and event.velocity == 0):
                 last_tempo = 0
                 count = 0
-                while count <= len(Q):
+                while count <= len(Q) and len(Q) != 0:
+                    count += 1
                     temp = Q.popleft()
                     if temp[0] == event.pitch:
                         break
                     Q.append(temp)
-                    count += 1
-                if count>=len(Q):
+
+                if count > len(Q) or count == 0:
                     continue
 
                 last = 0
@@ -194,21 +198,35 @@ def SolveMidi(path):
     return ret
 
 def test():
+    path = 'D:/Files/Project/melody-master/python-midi-master/good songs/Demonoid Phenomenon.mid'
+
+    #pattern = midi.read_midifile(path)
+
     pattern = midi.read_midifile(path)
+    with open("demo.txt","w") as fp:
+        print>>fp,pattern
+    tracks = SolveMidi(path)
+    with open("demo.mid.txt","w") as fp:
+        for track in tracks:
+            for event in track:
+                if event[0] == -1:
+                    print >>fp,"Note End"
+                else:
+                    print >>fp,event[0],event[1]
 
-    for track in pattern:
-        tick = 0
-        for event in track:
-            #print event.name
-            if event.name in ['Note On','Note Off']:
-                tick += event.tick
-
-        print tick
+    #for track in pattern:
+    #    tick = 0
+    #     for event in track:
+    #         #print event.name
+    #         if event.name in ['Note On','Note Off']:
+    #             tick += event.tick
+    #
+    #     print tick
 
 
 folder = 'D:/Files/Project/melody-master/python-midi-master/good songs/RenameData'
 
-def readfolder(filename,ratio=0.8):
+def readfolder(filename,ratio=0.8,packsize=500000):
     import os
     from datetime import datetime
     filelist = [file for file in os.listdir(folder)]
@@ -219,11 +237,18 @@ def readfolder(filename,ratio=0.8):
     songchord = []
     cnt = 0
     length = len(filelist)
+
     for file in filelist[0:int(length*ratio)]:
-        print file
+        print file,cnt
         file_path = os.path.join(folder,file)
-        score = StdScore(SolveMidi(file_path))
-        tracks = score.tracks
+        try:
+            tracks = SolveMidi(file_path)
+        except Exception,ex:
+            print ex
+            continue
+        if tracks == None or tracks == []:
+            continue
+        score = StdScore(tracks)
 
         #if cnt == 0:
         #    print score.getChordFeature()
@@ -255,29 +280,53 @@ def readfolder(filename,ratio=0.8):
         #     print >>fp,score.getKeyFeature()
 
         cnt += 1
-    dic['X'] = songkey
-    dic['Y'] = songchord
-    with open("%s_train.pkl"%filename,"wb") as fp:
-       pickle.dump(dic,fp,-1)
+        if cnt % packsize == 0:
+            dic['X'] = songkey
+            dic['Y'] = songchord
+            with open("%s_train%d.pkl" % (filename,int(cnt / packsize)), "wb") as fp:
+                pickle.dump(dic, fp, -1)
+            dic = {}
+            songkey = []
+            songchord = []
 
+    if cnt % packsize != 0:
+        dic['X'] = songkey
+        dic['Y'] = songchord
+        with open("%s_train%d.pkl" % (filename, int(cnt / packsize) + 1), "wb") as fp:
+            pickle.dump(dic, fp, -1)
 
+    cnt = 0
     dic = {}
     songkey = []
     songchord = []
     for file in filelist[int(length*ratio):length]:
         print file
         file_path = os.path.join(folder, file)
-        score = StdScore(SolveMidi(file_path))
+        tracks = SolveMidi(file_path)
+        if tracks == None or tracks == []:
+            continue
+        score = StdScore(tracks)
         songkey.append(score.getKeyFeature())
         songchord.append(score.getChordFeature())
+        cnt += 1
+        if cnt % packsize == 0:
+            dic['X'] = songkey
+            dic['Y'] = songchord
+            with open("%s_test%d.pkl" % (filename, int(cnt / packsize)), "wb") as fp:
+                pickle.dump(dic, fp, -1)
+            dic = {}
+            songkey = []
+            songchord = []
+    if cnt % packsize != 0:
+        dic['X'] = songkey
+        dic['Y'] = songchord
+        with open("%s_test%d.pkl" % (filename, int(cnt / packsize)+1), "wb") as fp:
+            pickle.dump(dic, fp, -1)
 
-    dic['X'] = songkey
-    dic['Y'] = songchord
-    with open("%s_train.pkl"%filename,"wb") as fp:
-        pickle.dump(dic,fp,-1)
 
 
 if __name__ == '__main__':
+    #test()
     filename = sys.argv[1]
     readfolder(filename)
     #tracks = SolveMidi(path)

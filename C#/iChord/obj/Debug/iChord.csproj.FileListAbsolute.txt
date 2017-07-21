@@ -1,0 +1,3 @@
+D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\iChord.exe.config
+D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\obj\Debug\Interop.SpeechLib.dll
+D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\obj\Debug\iChord.csproj.ResolveComReference.cache

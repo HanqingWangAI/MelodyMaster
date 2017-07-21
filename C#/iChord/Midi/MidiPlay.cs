@@ -7,7 +7,6 @@ using SimpleMidiPlayer.Midi;
 using System.Threading;
 
 using System.Runtime.InteropServices;
-using Windows;
 using System.Windows;
 
 namespace iChord

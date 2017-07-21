@@ -21,6 +21,27 @@ class Chord:
             chordSet[note.getNoteId()] += note.getTime()
         return chordTime
 
+    def translateNotesFeature(self, duration, frequency):
+        for i in range(StdNote.NOTENUM):
+            frequency[i] += int(duration[i] / threshold)
+        
+        
+        chordFreq = [0 for _ in range(len(self.chord))]
+        for i, c in enumerate(self.chord):
+            for chordNoteId in c:
+                chordFreq [i] += frequency[chordNoteId]
+        maxFreq = 0
+        chordId = 0
+        for index in range(len(chordFreq)):
+            if(chordFreq[index] > maxFreq):
+                chordId = index
+                maxFreq = chordFreq[index]
+
+        return chordId
+
+    def getChordId(self):
+    	return translateNotesFeature(self.getChordTime(),self.getChordFrequency())
+
     # Chord definition from music aspect
 
     def getReadableChord(self):
@@ -39,6 +60,7 @@ class Chord:
     def __init__(self, chord_tracks):
         self.notes = []
         self.name = ''
+        self.chord = ((0, 4, 7),(7, 11, 2), (5, 9, 0), (9, 0, 4), (4, 7, 11), (2, 5, 9),(7, 11, 5))
         for track in chord_tracks:
             for note in track:
                 self.notes.append(note)

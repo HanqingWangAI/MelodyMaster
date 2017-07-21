@@ -63,6 +63,13 @@ class StdScore:
             chordFeature.append(feature)
         return chordFeature
 
+    def getChordId(self):
+        chordId = []
+        or i in range(len(self.chords)):
+            feature = self.chords[i].getChordId()
+            chordFeature.append(feature)
+        return chordId
+
 
 if __name__ == "__main__":
     note1 = StdNote.Note(60, [1,4])

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
+using Microsoft.Scripting.Hosting;
 
 namespace iChord
 {
@@ -51,6 +52,27 @@ namespace iChord
             myProcess.WaitForExit();
             myProcess.Dispose();
             return myString;
+        }
+
+        public string connectPython(string score)
+        {
+            ScriptRuntime scriptRuntime = ScriptRuntime.CreateFromConfiguration();
+            ScriptEngine rbEng = scriptRuntime.GetEngine("python");
+            ScriptSource source = rbEng.CreateScriptSourceFromFile(@"D:\liuchang\Projects\Hackathon\Source\MelodyMaster\src\utils\RNN.py");
+            ScriptScope scope = rbEng.CreateScope();
+
+            try
+            {
+                //设置参数 
+                scope.SetVariable("arg1", score);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Input Error to Python");
+            }
+
+            source.Execute(scope);
+            return scope.GetVariable("score").ToString();
         }
     }
 }

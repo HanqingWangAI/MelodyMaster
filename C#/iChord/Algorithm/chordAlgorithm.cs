@@ -303,7 +303,8 @@ namespace iChord
             string outStr = "";
             //outStr = cnnFunction();
             var RNN = new Csharp2Python();
-            outStr = RNN.run(inStr);
+            // outStr = RNN.run(inStr);
+            outStr = outStr = RNN.connectPython(inStr);
             
             //if (splitedStr[i] != "")//防止出现  最后一个和弦（split函数多余出来的）对应的旋律是空的
             //    outStr += chordFeedback(originTohandle(splitedStr[i++])) + " ";

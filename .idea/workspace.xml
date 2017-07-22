@@ -6,15 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="26970398-be27-460a-8a52-77103358a0f8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/C#/.vs/iChord/v14/.suo" afterPath="$PROJECT_DIR$/C#/.vs/iChord/v14/.suo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/C#/iChord/bin/Debug/iChord.exe" afterPath="$PROJECT_DIR$/C#/iChord/bin/Debug/iChord.exe" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/C#/iChord/bin/Debug/iChord.pdb" afterPath="$PROJECT_DIR$/C#/iChord/bin/Debug/iChord.pdb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/C#/iChord/obj/Debug/iChord.exe" afterPath="$PROJECT_DIR$/C#/iChord/obj/Debug/iChord.exe" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/C#/iChord/obj/Debug/iChord.pdb" afterPath="$PROJECT_DIR$/C#/iChord/obj/Debug/iChord.pdb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/C#/iChord/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterPath="$PROJECT_DIR$/C#/iChord/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/C#/iChord/Algorithm/Csharp2Python.cs" afterPath="$PROJECT_DIR$/C#/iChord/Algorithm/Csharp2Python.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/C#/iChord/obj/Debug/GeneratedInternalTypeHelper.g.cs" afterPath="$PROJECT_DIR$/C#/iChord/obj/Debug/GeneratedInternalTypeHelper.g.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/C#/iChord/obj/Debug/iChord_MarkupCompile.lref" afterPath="$PROJECT_DIR$/C#/iChord/obj/Debug/iChord_MarkupCompile.lref" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/NoteTranslator.py" afterPath="$PROJECT_DIR$/src/utils/NoteTranslator.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/C#/iChord/App.config" afterPath="$PROJECT_DIR$/C#/iChord/App.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/C#/iChord/iChord.csproj" afterPath="$PROJECT_DIR$/C#/iChord/iChord.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/C#/iChord/obj/Debug/iChord_MarkupCompile.i.cache" afterPath="$PROJECT_DIR$/C#/iChord/obj/Debug/iChord_MarkupCompile.i.cache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/utils/RNN.py" afterPath="$PROJECT_DIR$/src/utils/RNN.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -85,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NoteTranslator.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NoteTranslator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utils/NoteTranslator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="14">
-              <caret line="11" column="61" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="61" />
+            <state relative-caret-position="85">
+              <caret line="5" column="20" lean-forward="false" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="20" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -97,14 +94,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RNN.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RNN.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/utils/RNN.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="136">
+              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1032,23 +1027,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/RNN.py">
+    <entry file="file://$PROJECT_DIR$/src/utils/NoteTranslator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="5" column="20" lean-forward="false" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="20" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/NoteTranslator.py">
+    <entry file="file://$PROJECT_DIR$/src/utils/RNN.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="11" column="61" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>

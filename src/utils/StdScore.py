@@ -65,7 +65,7 @@ class StdScore:
 
     def getChordId(self):
         chordId = []
-        or i in range(len(self.chords)):
+        for i in range(len(self.chords)):
             feature = self.chords[i].getChordId()
             chordFeature.append(feature)
         return chordId

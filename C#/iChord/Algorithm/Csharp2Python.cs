@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Scripting.Hosting;
@@ -20,9 +20,9 @@ namespace iChord
         /// </summary>
         /// <param name="python"></param>
         /// <param name="myPythonApp"></param>
-        public Csharp2Python(string python = @"D:\Programs\Python27", string myPythonApp = @".\..\..\..\..\src\utils\RNN.py")
+        public Csharp2Python(string python = @"C:\Users\v-donye\AppData\Local\Programs\Python\Python35", string myPythonApp = @".\..\..\..\..\src\utils\RNN.py")
         {
-            Python = Path.Combine(python, "python.exe");
+            Python = Path.Combine(python, "python3.exe");
             MyPythonApp = myPythonApp;
         }
 
@@ -34,7 +34,7 @@ namespace iChord
             //make sure we can read the output from stdout
             myProcessStartInfo.UseShellExecute = false;
             myProcessStartInfo.RedirectStandardOutput = true;
-            myProcessStartInfo.CreateNoWindow = true;
+            myProcessStartInfo.CreateNoWindow = false;
 
             //start python app with 3 arguments
             //1st argument is pointer to itself, 2nd and 3rd are actual arguments we want to send
@@ -47,7 +47,7 @@ namespace iChord
             myProcess.StartInfo = myProcessStartInfo;
 
             myProcess.Start();
-
+            //Thread.Sleep(5000);
             StreamReader myStreamReader = myProcess.StandardOutput;
             string myString = myStreamReader.ReadToEnd();
 

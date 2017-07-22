@@ -36,3 +36,4 @@ D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\Microsoft
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\Microsoft.Scripting.xml
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\Microsoft.Scripting.AspNet.xml
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\Microsoft.Scripting.Metadata.xml
+D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\obj\Debug\iChord.csprojResolveAssemblyReference.cache

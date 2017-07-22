@@ -20,9 +20,9 @@ namespace iChord
         /// </summary>
         /// <param name="python"></param>
         /// <param name="myPythonApp"></param>
-        public Csharp2Python(string python = @"D:\Programs\Python27\python.exe", string myPythonApp = @".\..\..\..\..\src\utils\RNN.py")
+        public Csharp2Python(string python = @"D:\Programs\Python27", string myPythonApp = @".\..\..\..\..\src\utils\RNN.py")
         {
-            Python = python;
+            Python = Path.Combine(python, "python.exe");
             MyPythonApp = myPythonApp;
         }
 

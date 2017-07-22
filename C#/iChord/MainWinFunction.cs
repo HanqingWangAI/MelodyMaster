@@ -222,7 +222,7 @@ namespace iChord
             textBlock_main.Text = NoteInput.devideBar(myStr);
             myAlgorithm.init();//初始化后重新算一遍
             string str = myAlgorithm.rnnChordGenertor(textBlock_main.Text);//RNN Function
-            MessageBox.Show(str);
+            Console.WriteLine(str);
             if (!String.IsNullOrEmpty(str) && str.Last() != ' ')
                 str += " ";
             textBlock_main2.Text = inputMainChord = str;

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.Scripting.Hosting;
+using System.Collections.ObjectModel;
 
 namespace iChord
 {
@@ -19,7 +20,7 @@ namespace iChord
         /// </summary>
         /// <param name="python"></param>
         /// <param name="myPythonApp"></param>
-        public Csharp2Python(string python = @"D:\Programs\Python27\", string myPythonApp = @"D:\liuchang\Projects\Hackathon\Source\MelodyMaster\src\utils\RNN.py")
+        public Csharp2Python(string python = @"D:\Programs\Python27\python.exe", string myPythonApp = @"D:\liuchang\Projects\Hackathon\Source\MelodyMaster\src\utils\RNN.py")
         {
             Python = python;
             MyPythonApp = myPythonApp;
@@ -33,6 +34,7 @@ namespace iChord
             //make sure we can read the output from stdout
             myProcessStartInfo.UseShellExecute = false;
             myProcessStartInfo.RedirectStandardOutput = true;
+            myProcessStartInfo.CreateNoWindow = true;
 
             //start python app with 3 arguments
             //1st argument is pointer to itself, 2nd and 3rd are actual arguments we want to send
@@ -52,27 +54,6 @@ namespace iChord
             myProcess.WaitForExit();
             myProcess.Dispose();
             return myString;
-        }
-
-        public string connectPython(string score)
-        {
-            ScriptRuntime scriptRuntime = ScriptRuntime.CreateFromConfiguration();
-            ScriptEngine rbEng = scriptRuntime.GetEngine("python");
-            ScriptSource source = rbEng.CreateScriptSourceFromFile(@"D:\liuchang\Projects\Hackathon\Source\MelodyMaster\src\utils\RNN.py");
-            ScriptScope scope = rbEng.CreateScope();
-
-            try
-            {
-                //设置参数 
-                scope.SetVariable("arg1", score);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Input Error to Python");
-            }
-
-            source.Execute(scope);
-            return scope.GetVariable("score").ToString();
         }
     }
 }

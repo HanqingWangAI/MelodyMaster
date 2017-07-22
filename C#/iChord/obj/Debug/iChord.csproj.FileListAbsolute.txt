@@ -11,7 +11,6 @@ D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\ko\Micros
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\ru\Microsoft.Expression.Drawing.resources.dll
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\zh-Hans\Microsoft.Expression.Drawing.resources.dll
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\zh-Hant\Microsoft.Expression.Drawing.resources.dll
-D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\obj\Debug\iChord.csprojResolveAssemblyReference.cache
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\obj\Debug\Interop.SpeechLib.dll
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\obj\Debug\iChord.csproj.ResolveComReference.cache
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\obj\Debug\combobox_Chord.g.cs
@@ -29,18 +28,10 @@ D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\obj\Debug\iChord.Pr
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\obj\Debug\iChord.csproj.GenerateResource.Cache
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\obj\Debug\iChord.exe
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\obj\Debug\iChord.pdb
-D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\IronPython.dll
-D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\IronPython.Modules.dll
-D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\IronPython.SQLite.dll
-D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\IronPython.Wpf.dll
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\Microsoft.Dynamic.dll
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\Microsoft.Scripting.AspNet.dll
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\Microsoft.Scripting.dll
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\Microsoft.Scripting.Metadata.dll
-D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\IronPython.xml
-D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\IronPython.Modules.xml
-D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\IronPython.SQLite.xml
-D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\IronPython.Wpf.xml
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\Microsoft.Dynamic.xml
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\Microsoft.Scripting.xml
 D:\liuchang\Projects\Hackathon\Source\MelodyMaster\C#\iChord\bin\Debug\Microsoft.Scripting.AspNet.xml

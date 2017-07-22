@@ -64,6 +64,7 @@ class NoteTranslator():
 
 if __name__ == '__main__':
     # muse_score = open("C:/Users/v-hanqw.FAREAST/Desktop/hhdhc.txt").readlines()[0]
+    score = agv1
     a = NoteTranslator()
     # a = a.fw_run(muse_score)
     bar = [1,2,3,4,5,6]

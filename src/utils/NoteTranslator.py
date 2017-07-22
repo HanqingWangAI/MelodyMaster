@@ -36,7 +36,7 @@ class NoteTranslator():
 
     def bw_run(self, chord):
         for bar in chord:
-            process_bar(bar)
+            processed_bar(bar)
 
     def processed_bar(self, bar):
         bar_score = []

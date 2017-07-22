@@ -18,7 +18,7 @@ namespace iChord
         /// </summary>
         /// <param name="python"></param>
         /// <param name="myPythonApp"></param>
-        public Csharp2Python(string python = @"C:\Users\v-donye\AppData\Local\Continuum\Anaconda2", string myPythonApp = @"C:\Users\v-donye\Desktop\MelodyMaster\src\utils\RNN.py")
+        public Csharp2Python(string python = @"D:\Programs\Python27\", string myPythonApp = @"D:\liuchang\Projects\Hackathon\Source\MelodyMaster\src\utils\RNN.py")
         {
             Python = python;
             MyPythonApp = myPythonApp;

@@ -3,7 +3,8 @@
 
 #Python files
 *.pyc
-
+#C# Debug
+C#/iChord/bin
 # User-specific files
 *.suo
 *.user

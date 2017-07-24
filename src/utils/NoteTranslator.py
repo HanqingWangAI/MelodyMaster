@@ -12,6 +12,7 @@ class NoteTranslator():
         # input format: C6040999 D6040999 E6040999 C6040999 ,......
         raw_bar_list = [bar.strip().split(' ') for bar in score.strip().split(',') if bar is not '' and bar is not ' ']
         return_bar_list = list()
+        noteEnd = StdNote.Note(-1, [1,1])
 
         for bar in raw_bar_list:
             return_bar = list()
@@ -19,8 +20,8 @@ class NoteTranslator():
             for note in bar:
                 return_note = self.processed_note(note)
                 return_bar.append(return_note)
-
-            return_bar_list.append(return_bar)
+            return_bar.append(noteEnd)
+            return_bar_list += return_bar
 
         return return_bar_list
 
@@ -64,7 +65,6 @@ class NoteTranslator():
 
 if __name__ == '__main__':
     # muse_score = open("C:/Users/v-hanqw.FAREAST/Desktop/hhdhc.txt").readlines()[0]
-    score = agv1
     a = NoteTranslator()
     # a = a.fw_run(muse_score)
     bar = [1,2,3,4,5,6]

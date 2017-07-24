@@ -17,6 +17,7 @@ using System.Xml;
 using System.IO;
 using SimpleMidiPlayer.Midi;
 using System.Windows.Markup;
+using TCPLib;
 
 namespace iChord
 {
@@ -26,8 +27,11 @@ namespace iChord
     public partial class MainWindow : Window
     {
         public static MainWindow InterfaceForMidi;
+        public static Client client;
         public MainWindow()
         {
+            client = new Client("10.172.150.34", 10010);
+            client.Start();
             mainInit();
             InitializeComponent();
             initOthers();
@@ -155,9 +159,9 @@ namespace iChord
             textBlock_main2.Text = myAlgorithm.multiChordGenertor(textBlock_main.Text);
         }
 
-        private void appBarButton_Smart_Click(object sender, RoutedEventArgs e)
+        private async void appBarButton_Smart_Click(object sender, RoutedEventArgs e)
         {
-            smartChord();
+            await smartChord();
             //显示和弦，和旋律。
             string melody = textBlock_main.Text;
             string chord = textBlock_main2.Text.Trim();
@@ -596,7 +600,16 @@ namespace iChord
 
         }
 
-
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try {
+                MainWindow.client.Stop();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
         private void button_UpTone_Click(object sender, RoutedEventArgs e)
         {
             MidiPlay.changekey(1);

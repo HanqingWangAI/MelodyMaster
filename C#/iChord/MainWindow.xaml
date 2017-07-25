@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:iChord"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="iChord.MainWindow"
         mc:Ignorable="d"
-        Title="MelodyMaster" Height="740" Width="1280" Background="#FF464646" PreviewKeyDown="Window_PreviewKeyDown">
+        Title="MelodyMaster" Height="740" Width="1280" Background="#FF464646" PreviewKeyDown="Window_PreviewKeyDown" Closing="Window_Closing">
 
     <Window.Resources>
         <Style x:Key="FocusVisual">

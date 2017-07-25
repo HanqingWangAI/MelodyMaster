@@ -2,9 +2,11 @@ import pickle
 import random
 import math
 import numpy as np
+from random import random
 
 BLOCKSIZE = 4
 UNROLL = 2 * BLOCKSIZE
+TRUEP = 1
 
 class dataset:
 
@@ -16,8 +18,24 @@ class dataset:
         for i in range(len(chords)):
             tmp = [0 for _ in range(8)]
             tmp[chords[i]] = 1
-            oneHotlist.append(oneHotlist)
+            oneHotlist.append(tmp)
         return oneHotlist
+
+    def check(self,Y):
+        for key in Y:
+            if key>4:
+                return True
+        a = random()
+        if a < TRUEP:
+            return True
+        else:
+            return False
+
+    def addBlock(self):
+        self.index_feature += BLOCKSIZE
+        if (self.index_feature+UNROLL)  > len(self.data['X'][self.index_song]):
+            self.index_feature = 0
+            self.index_song = (self.index_song + 1) % len(self.data['X'])
 
     def getBatch(self):
         X = []
@@ -30,6 +48,9 @@ class dataset:
         while cnt < self.batch_size:
             if (self.index_feature+UNROLL)  > len(self.data['X'][self.index_song]):
                 self.index_song = (self.index_song + 1) % len(self.data['X'])
+                continue
+            if self.is_id == 1 and not self.check(self.data['Y'][self.index_song][self.index_feature:self.index_feature+UNROLL]):
+                self.addBlock()
                 continue
             X.append(self.data['X'][self.index_song][self.index_feature:self.index_feature+UNROLL])
             Y.append(self.data['Y'][self.index_song][self.index_feature:self.index_feature+UNROLL])

@@ -77,9 +77,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Algorithm\Csharp2Python.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="combobox_Chord.xaml.cs">
       <DependentUpon>combobox_Chord.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Server.cs" />
     <Compile Include="RealPlay.cs" />
     <Compile Include="MainWinDemonstrate.cs" />
     <Compile Include="MainWinFileOp.cs" />

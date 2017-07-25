@@ -7,7 +7,7 @@ class ChordTranslator():
         self.note = {'C': 0, 'D': 2, 'E': 4, 'F': 5, 'G': 7, 'A': 9, 'B': 11, 'Z': -2}
         # C G F Am Em Dm G7
         self.chord = ((0, 4, 7),(7, 11, 2), (5, 9, 0), (9, 0, 4), (4, 7, 11), (2, 5, 9),(7, 11, 5))
-        self.dict = ['C', 'G', 'F', 'Am', 'Em', 'Dm', 'G7']
+        self.dict = ['None', 'C', 'G', 'F', 'Am', 'Em', 'Dm', 'G7']
 
     def translateNotesFeature(self, duration, frequency):
         for i in range(StdNote.NOTENUM):

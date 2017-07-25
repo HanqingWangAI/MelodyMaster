@@ -216,12 +216,13 @@ namespace iChord
             setChord(chord);
         }
 
-        public void smartChord()
+        public async Task smartChord()
         {
             string myStr = inputMainMelody = textBlock_main.Text.Replace(",", "");
             textBlock_main.Text = NoteInput.devideBar(myStr);
             myAlgorithm.init();//初始化后重新算一遍
             string str = myAlgorithm.rnnChordGenertor(textBlock_main.Text);//RNN Function
+            //string str = myAlgorithm.multiChordGenertor(textBlock_main.Text);//old Function
             Console.WriteLine(str);
             if (!String.IsNullOrEmpty(str) && str.Last() != ' ')
                 str += " ";

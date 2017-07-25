@@ -4,6 +4,7 @@ from collections import deque
 from utils import *
 import pickle
 import sys
+import numpy as np
 
 inf = 10000000
 
@@ -67,12 +68,9 @@ def SolveMidi(path):
         last_tempo = 0
         section = []
         for event in track_:
-
             if event.name == 'Time Signature':
                 length_bar = res * event.numerator * 4 / event.denominator
                 #print 'length_bar',length_bar,'numerator',event.numerator,'denominator',event.denominator
-
-
 
             tick += event.tick
             if tick > inf:
@@ -84,6 +82,7 @@ def SolveMidi(path):
                 continue
             # if it is an Off Event, mark this pitch
             if event.name == 'Note Off' or (event.name == 'Note On' and event.velocity == 0):
+                #print 'Note off event'
                 last_tempo = 0
                 count = 0
                 while count <= len(Q) and len(Q) != 0:
@@ -93,7 +92,8 @@ def SolveMidi(path):
                         break
                     Q.append(temp)
 
-                if count > len(Q) or count == 0:
+                if count > len(Q)+1 or count == 0:
+                    #print 'count',count
                     continue
 
                 last = 0
@@ -115,11 +115,10 @@ def SolveMidi(path):
                     pos += 1
 
                 length = tick - last_end
-
+                #print 'tick',tick,'last_end',last_end
                 if length != 0:
                     beat = findBeat(length,beats)
                     last = beat - length
-
 
                     if pos < sections:
                         track[pos].append(Note(event.pitch, fraction(beat, length_pitch)))
@@ -224,9 +223,11 @@ def test():
     #     print tick
 
 
-folder = 'D:/Files/Project/melody-master/python-midi-master/good songs/RenameData'
+#folder = 'D:/Files/Project/melody-master/python-midi-master/good songs/RenameData'
+folder = 'D:/Files/Project/melody-master/python-midi-master/good songs/C-major-test'
+#folder = 'D:/Files/Project/melody-master/python-midi-master/good songs/Mozart'
 
-def readfolder(filename,ratio=0.8,packsize=500000):
+def readfolder(filename,ratio=1,packsize=500000):
     import os
     from datetime import datetime
     filelist = [file for file in os.listdir(folder)]
@@ -237,6 +238,8 @@ def readfolder(filename,ratio=0.8,packsize=500000):
     songchord = []
     cnt = 0
     length = len(filelist)
+    filelist = np.asarray(filelist)
+    np.random.shuffle(filelist)
 
     for file in filelist[0:int(length*ratio)]:
         print file,cnt
@@ -253,7 +256,8 @@ def readfolder(filename,ratio=0.8,packsize=500000):
         #if cnt == 0:
         #    print score.getChordFeature()
         songkey.append(score.getKeyFeature())
-        songchord.append(score.getChordFeature())
+        #songchord.append(score.getChordFeature())
+        songchord.append(score.getChordId())
         # with open("test/%s.txt"%file,"w") as fp:
         #     cnt_track = 0
         #     #print "============="
@@ -300,14 +304,15 @@ def readfolder(filename,ratio=0.8,packsize=500000):
     songkey = []
     songchord = []
     for file in filelist[int(length*ratio):length]:
-        print file
+        print file,cnt
         file_path = os.path.join(folder, file)
         tracks = SolveMidi(file_path)
         if tracks == None or tracks == []:
             continue
         score = StdScore(tracks)
         songkey.append(score.getKeyFeature())
-        songchord.append(score.getChordFeature())
+        #songchord.append(score.getChordFeature())
+        songchord.append(score.getChordId())
         cnt += 1
         if cnt % packsize == 0:
             dic['X'] = songkey
@@ -317,6 +322,7 @@ def readfolder(filename,ratio=0.8,packsize=500000):
             dic = {}
             songkey = []
             songchord = []
+
     if cnt % packsize != 0:
         dic['X'] = songkey
         dic['Y'] = songchord

@@ -63,6 +63,13 @@ class StdScore:
             chordFeature.append(feature)
         return chordFeature
 
+    def getChordId(self):
+        chordId = []
+        for i in range(len(self.chords)):
+            feature = self.chords[i].getChordId()
+            chordId.append(feature)
+        return chordId
+
 
 if __name__ == "__main__":
     note1 = StdNote.Note(60, [1,4])
@@ -75,5 +82,12 @@ if __name__ == "__main__":
     #print(track[1][2].pitch)
 
     score = StdScore(track)
-    print(score.getKeyFeature())
-    print(score.getChordFeature())
+    chord1 = StdChord.Chord(track)
+    # print(score.getKeyFeature())
+    # print(score.getChordFeature())
+    print(note1.getReadableNote())
+    print(chord1.getReadableChord())
+
+    note2.x[0] = 2
+    print(note1.x)
+    print(note2.x)

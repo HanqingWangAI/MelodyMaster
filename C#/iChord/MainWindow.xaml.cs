@@ -17,6 +17,7 @@ using System.Xml;
 using System.IO;
 using SimpleMidiPlayer.Midi;
 using System.Windows.Markup;
+using TCPLib;
 
 namespace iChord
 {
@@ -26,8 +27,11 @@ namespace iChord
     public partial class MainWindow : Window
     {
         public static MainWindow InterfaceForMidi;
+        public static Client client;
         public MainWindow()
         {
+            client = new Client("10.172.150.34", 10010);
+            client.Start();
             mainInit();
             InitializeComponent();
             initOthers();
@@ -35,14 +39,13 @@ namespace iChord
             InterfaceForMidi = this;
 
             combobox_Chord c = new combobox_Chord();
-
             //c.Content
         }
-        bool muteMainScore = false;//是否静音
+        bool muteMainScore = false;//是否Mute
         chordAlgorithm myAlgorithm = new chordAlgorithm();//算法
         const int LengthOfeachNote = 8+1;//音符长度（包括空格）
         const int instrumentN = 4;//总的乐器数目
-        UserDefinedChord[] chordTrack = new UserDefinedChord[instrumentN];//用户定义和弦（暂时没用）
+        UserDefinedChord[] chordTrack = new UserDefinedChord[instrumentN];//用户定义和先（暂时没用）
         bool editSingleNote = false;//修改单音状态
         MidiDevice myMidiDevice = MidiPlay.playInitialization();//建立一个midi设备
         int singleNoteId;//第几个音需要被修改（根据鼠标点击）
@@ -155,9 +158,9 @@ namespace iChord
             textBlock_main2.Text = myAlgorithm.multiChordGenertor(textBlock_main.Text);
         }
 
-        private void appBarButton_Smart_Click(object sender, RoutedEventArgs e)
+        private async void appBarButton_Smart_Click(object sender, RoutedEventArgs e)
         {
-            smartChord();
+            await smartChord();
             //显示和弦，和旋律。
             string melody = textBlock_main.Text;
             string chord = textBlock_main2.Text.Trim();
@@ -596,7 +599,16 @@ namespace iChord
 
         }
 
-
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            try {
+                MainWindow.client.Stop();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
         private void button_UpTone_Click(object sender, RoutedEventArgs e)
         {
             MidiPlay.changekey(1);

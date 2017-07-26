@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using TCPLib;
 namespace iChord
 {
     /*和弦核心算法，通过接受用户输入的音符，自动处理分析，能够结合音符特点，乐曲特点，音符长短等信息进行处理得到正确，和协的和弦。
@@ -43,7 +45,10 @@ namespace iChord
         {
             MusicStyle = 4;
             chordInit();
+            //RNN = new Csharp2Python("10.172.150.34");
         }
+
+        public Csharp2Python RNN { get; set; }
         //初始化
 
 
@@ -302,9 +307,20 @@ namespace iChord
         {
             string outStr = "";
             //outStr = cnnFunction();
-            var RNN = new Csharp2Python();
-            outStr = RNN.run(inStr);
-            // outStr = RNN.connectPython(inStr);
+            // var RNN = new Csharp2Python();
+            // outStr = RNN.run(inStr);
+
+            // var RNN = new Csharp2Python("10.172.150.34");
+            MainWindow.client.SendMsg(inStr);
+            while (true)
+            {
+                Package pac = MainWindow.client.FetchRequest();
+                if (pac == null) continue;
+                outStr = Encoding.UTF8.GetString(pac.Msg);
+                break;
+            }
+                //var outStrNet =  RNN.connectServer(inStr);
+            //MessageBox.Show(outStrNet);
             
             //if (splitedStr[i] != "")//防止出现  最后一个和弦（split函数多余出来的）对应的旋律是空的
             //    outStr += chordFeedback(originTohandle(splitedStr[i++])) + " ";

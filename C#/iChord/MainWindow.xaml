@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:iChord"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="iChord.MainWindow"
         mc:Ignorable="d"
-        Title="MelodyMaster" Height="740" Width="1280" Background="#FF464646" PreviewKeyDown="Window_PreviewKeyDown">
+        Title="MelodyMaster" Height="740" Width="1280" Background="#FF464646" PreviewKeyDown="Window_PreviewKeyDown" Closing="Window_Closing">
 
     <Window.Resources>
         <Style x:Key="FocusVisual">
@@ -1295,12 +1295,12 @@
                 </Border>
                 <Rectangle Fill="Black" Stroke="Black" Grid.ColumnSpan="3" Opacity="0.1" Margin="0,0,0,-9.019" Height="25.037" VerticalAlignment="Bottom"/>
                 <TextBlock x:Name="upWin_Tone" TextAlignment="Center" Text="C" HorizontalAlignment="Center" Foreground="#FFCFCFCF" FontSize="18.667" Margin="-3,9,0,7" Width="125" Grid.RowSpan="2"/>
-                <TextBlock x:Name="upWin_Name" TextAlignment="Center" Text="新曲目" Grid.Column="1" HorizontalAlignment="Center" Foreground="#FFCFCFCF" FontSize="18.667" Margin="0,9,0,5" Grid.RowSpan="2" Width="122"/>
+                <TextBlock x:Name="upWin_Name" TextAlignment="Center" Text="New Music" Grid.Column="1" HorizontalAlignment="Center" Foreground="#FFCFCFCF" FontSize="18.667" Margin="0,9,0,5" Grid.RowSpan="2" Width="122"/>
                 <TextBlock x:Name="upWin_Speed" TextAlignment="Center" Text="100" Grid.Column="2" HorizontalAlignment="Center" Foreground="#FFCFCFCF" FontSize="18.667" Margin="0,9.019,0,6.998" Width="122.238" Grid.RowSpan="2"/>
 
-                <TextBlock Text="调式" TextAlignment="Center" Grid.Row="1" Foreground="#FF828282"  HorizontalAlignment="Center" Width="125.238" Margin="-3,0,0,0" />
-                <TextBlock Text="曲名" TextAlignment="Center" Grid.Row="1" Grid.Column="1" Foreground="#FF828282"  HorizontalAlignment="Center" Margin="0.119,0" Width="122" />
-                <TextBlock Text="曲速" TextAlignment="Center"  Grid.Row="1" Grid.Column="2" Foreground="#FF828282"  HorizontalAlignment="Center" Width="122.238" />
+                <TextBlock Text="Tone" TextAlignment="Center" Grid.Row="1" Foreground="#FF828282"  HorizontalAlignment="Center" Width="125.238" Margin="-3,0,0,0" />
+                <TextBlock Text="Name" TextAlignment="Center" Grid.Row="1" Grid.Column="1" Foreground="#FF828282"  HorizontalAlignment="Center" Margin="0.119,0" Width="122" />
+                <TextBlock Text="Speed" TextAlignment="Center"  Grid.Row="1" Grid.Column="2" Foreground="#FF828282"  HorizontalAlignment="Center" Width="122.238" />
             </Grid>
 
             <Grid Grid.Column="1" HorizontalAlignment="Stretch"  >
@@ -1374,8 +1374,8 @@
                     </Border.Background>
                 </Border>
 
-                <TextBlock Text="速度" Foreground="#FFC2C2C2" Margin="10,5,10,0" FontSize="8" />
-                <TextBlock Text="音量" Grid.Row="1" Foreground="#FFC2C2C2" Margin="10,5,10,0" FontSize="8" />
+                <TextBlock Text="Speed" Foreground="#FFC2C2C2" Margin="10,5,10,0" FontSize="8" />
+                <TextBlock Text="Volume" Grid.Row="1" Foreground="#FFC2C2C2" Margin="10,5,10,0" FontSize="8" />
                 <TextBlock x:Name="textBlock_Volume" Text="100" Foreground="#FFC8C7C8" Grid.Column="2" Grid.Row="1" Margin="-2.131,3.735,10,-3.666" FontSize="9.333" />
                 <Slider x:Name="slider1" Value ="100"  Grid.Row="1"  Minimum="0" Maximum="100" ValueChanged="slider1_ValueChanged" Style="{DynamicResource SliderStyle1}" Margin="-17.211,-0.106,5.121,-1.937" Grid.Column="1" RenderTransformOrigin="0.5,0.5">
                     <Slider.RenderTransform>
@@ -1468,67 +1468,67 @@
 
             <Button x:Name="appBarButton" VerticalAlignment="Top" Height="50" Grid.Column ="1" Grid.ColumnSpan="2" Content ="2" HorizontalAlignment="Stretch" Margin ="0,1,0,0"  Width="Auto" Click="appBarButton_Click"  BorderThickness="0" Style="{DynamicResource ButtonStyle1}" Foreground="#FFC8C7C8" FontFamily="Wingdings" FontSize="29.333" FontWeight="Bold"/>
             <StackPanel Grid.Row="0" Grid.RowSpan="2">
-                <TextBlock TextWrapping="Wrap" TextAlignment="Center"  Margin="0,1,2,0"  VerticalAlignment="Top" Height="51" Foreground="#FFDBDBDB" RenderTransformOrigin="0.5,0.5" FontSize="10.667" Background="#FF3A3A3A" LineHeight="16"><Run/><LineBreak/><Run Text="伴奏"/></TextBlock>
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center"  Margin="0,1,2,0"  VerticalAlignment="Top" Height="51" Foreground="#FFDBDBDB" RenderTransformOrigin="0.5,0.5" FontSize="10.667" Background="#FF3A3A3A" LineHeight="16"><Run/><LineBreak/><Run Text="Ac"/></TextBlock>
                 <ToggleButton x:Name="toggleButton" Margin="0,3,2,0" Height="24.857" VerticalAlignment="Bottom" Click="toggleButton_Click" BorderThickness="0">
                     <ToggleButton.Background>
                         <ImageBrush ImageSource="accompany.png" Stretch="Uniform"/>
                     </ToggleButton.Background>
                 </ToggleButton>
-                <TextBlock TextWrapping="Wrap" Margin="0,5,2,0"  VerticalAlignment="Top" Height="50" Foreground="#FFDBDBDB" RenderTransformOrigin="0.5,0.5" FontSize="10.667" Background="#FF3A3A3A" TextAlignment="Center" Text="主旋律" LineHeight="16"/>
-                <TextBlock Height="150" TextWrapping="Wrap"  Foreground="#FFDBDBDB" Margin="0,2,2,0" FontSize="10.667" Background="#FF3A3A3A" TextAlignment="Center"><Run Text="      "/><Run/><LineBreak/><Run/><LineBreak/><Run Text="和弦轨道"/></TextBlock>
+                <TextBlock TextWrapping="Wrap" Margin="0,5,2,0"  VerticalAlignment="Top" Height="50" Foreground="#FFDBDBDB" RenderTransformOrigin="0.5,0.5" FontSize="10.667" Background="#FF3A3A3A" TextAlignment="Center" Text="M" LineHeight="16"/>
+                <TextBlock Height="150" TextWrapping="Wrap"  Foreground="#FFDBDBDB" Margin="0,2,2,0" FontSize="10.667" Background="#FF3A3A3A" TextAlignment="Center"><Run Text="      "/><Run/><LineBreak/><Run/><LineBreak/><Run Text="C"/></TextBlock>
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Height="auto" Margin="0,54,0,-0.5" Grid.Column="1" Grid.RowSpan="2">
-                <Label Height="25" Content="音色" Foreground="#FFC8C7C8" Background="#FF6D6D6D"/>
+                <Label Height="25" Content="Timbre" Foreground="#FFC8C7C8" Background="#FF6D6D6D"/>
                 <ComboBox x:Name="comboBox_ToneChange0" Height="50"  BorderThickness="0" Margin ="0,1" SelectedIndex="0" Style="{DynamicResource ComboBoxStyle1}" Foreground="#FFC8C7C8" >
-                    <ComboBoxItem x:Name="box0_ToneChange1" Content="钢琴" Selected="box0_ToneChange1_Checked"   />
-                    <ComboBoxItem x:Name="box0_ToneChange2" Content="风琴"  Selected="box0_ToneChange2_Checked"  />
-                    <ComboBoxItem x:Name="box0_ToneChange3" Content="水晶" Selected="box0_ToneChange3_Checked" />
-                    <ComboBoxItem x:Name="box0_ToneChange4" Content="吉他"  Selected="box0_ToneChange4_Checked" />
-                    <ComboBoxItem x:Name="box0_ToneChange7" Content="小提琴"  Selected="box0_ToneChange7_Checked" />
-                    <ComboBoxItem x:Name="box0_ToneChange8" Content="长笛"  Selected="box0_ToneChange8_Checked" />
-                    <ComboBoxItem x:Name="box0_ToneChange9" Content="双簧管"  Selected="box0_ToneChange9_Checked" />
-                    <ComboBoxItem x:Name="box0_ToneChange10" Content="唢呐"  Selected="box0_ToneChange10_Checked" />
-                    <ComboBoxItem x:Name="box0_ToneChange5" Content="随机乐器"  Selected="box0_ToneChange5_Checked" />
-                    <ComboBoxItem x:Name="box0_ToneChange6" Content="静音"  Selected="box0_ToneChange6_Checked" />
+                    <ComboBoxItem x:Name="box0_ToneChange1" Content="Piano" Selected="box0_ToneChange1_Checked"   />
+                    <ComboBoxItem x:Name="box0_ToneChange2" Content="Organ"  Selected="box0_ToneChange2_Checked"  />
+                    <ComboBoxItem x:Name="box0_ToneChange3" Content="Crystal" Selected="box0_ToneChange3_Checked" />
+                    <ComboBoxItem x:Name="box0_ToneChange4" Content="Guitar"  Selected="box0_ToneChange4_Checked" />
+                    <ComboBoxItem x:Name="box0_ToneChange7" Content="Violin"  Selected="box0_ToneChange7_Checked" />
+                    <ComboBoxItem x:Name="box0_ToneChange8" Content="Flute"  Selected="box0_ToneChange8_Checked" />
+                    <ComboBoxItem x:Name="box0_ToneChange9" Content="Oboe"  Selected="box0_ToneChange9_Checked" />
+                    <ComboBoxItem x:Name="box0_ToneChange10" Content="Suona Horn"  Selected="box0_ToneChange10_Checked" />
+                    <ComboBoxItem x:Name="box0_ToneChange5" Content="Random"  Selected="box0_ToneChange5_Checked" />
+                    <ComboBoxItem x:Name="box0_ToneChange6" Content="Mute"  Selected="box0_ToneChange6_Checked" />
                 </ComboBox>
                 <ComboBox x:Name="comboBox_ToneChange1"  SelectedIndex="0" HorizontalAlignment="Stretch" Height="50" Margin="0,1,0,0" VerticalAlignment="Top" Background="#66AAAAAA" BorderThickness="0" Style="{DynamicResource ComboBoxStyle1}" Foreground="#FFC8C7C8" >
-                    <ComboBoxItem x:Name="box1_ToneChange1" Content="钢琴" Selected="box1_ToneChange1_Checked"   />
-                    <ComboBoxItem x:Name="box1_ToneChange2" Content="风琴" Selected="box1_ToneChange2_Checked"  />
-                    <ComboBoxItem x:Name="box1_ToneChange3" Content="水晶" Selected="box1_ToneChange3_Checked" />
-                    <ComboBoxItem x:Name="box1_ToneChange4" Content="吉他"  Selected="box1_ToneChange4_Checked" />
-                    <ComboBoxItem x:Name="box1_ToneChange6" Content="小提琴"  Selected="box1_ToneChange6_Checked" />
-                    <ComboBoxItem x:Name="box1_ToneChange7" Content="长笛"  Selected="box1_ToneChange7_Checked" />
-                    <ComboBoxItem x:Name="box1_ToneChange8" Content="双簧管"  Selected="box1_ToneChange8_Checked" />
-                    <ComboBoxItem x:Name="box1_ToneChange9" Content="唢呐"  Selected="box1_ToneChange9_Checked" />
-                    <ComboBoxItem x:Name="box1_ToneChange5" Content="随机乐器"  Selected="box1_ToneChange5_Checked" />
+                    <ComboBoxItem x:Name="box1_ToneChange1" Content="Piano" Selected="box1_ToneChange1_Checked"   />
+                    <ComboBoxItem x:Name="box1_ToneChange2" Content="Organ" Selected="box1_ToneChange2_Checked"  />
+                    <ComboBoxItem x:Name="box1_ToneChange3" Content="Crystal" Selected="box1_ToneChange3_Checked" />
+                    <ComboBoxItem x:Name="box1_ToneChange4" Content="Guitar"  Selected="box1_ToneChange4_Checked" />
+                    <ComboBoxItem x:Name="box1_ToneChange6" Content="Violin"  Selected="box1_ToneChange6_Checked" />
+                    <ComboBoxItem x:Name="box1_ToneChange7" Content="Flute"  Selected="box1_ToneChange7_Checked" />
+                    <ComboBoxItem x:Name="box1_ToneChange8" Content="Oboe"  Selected="box1_ToneChange8_Checked" />
+                    <ComboBoxItem x:Name="box1_ToneChange9" Content="Suona Horn"  Selected="box1_ToneChange9_Checked" />
+                    <ComboBoxItem x:Name="box1_ToneChange5" Content="Random"  Selected="box1_ToneChange5_Checked" />
                 </ComboBox>
                 <ComboBox x:Name="comboBox_ToneChange2"  SelectedIndex="0" HorizontalAlignment="Stretch" Height="50" Margin="0,1,0,0" VerticalAlignment="Top" Background="#66AAAAAA" BorderThickness="0" Style="{DynamicResource ComboBoxStyle1}" Foreground="#FFC8C7C8" >
-                    <ComboBoxItem x:Name="box2_ToneChange1" Content="钢琴" Selected="box2_ToneChange1_Checked"   />
-                    <ComboBoxItem x:Name="box2_ToneChange2" Content="风琴"  Selected="box2_ToneChange2_Checked"  />
-                    <ComboBoxItem x:Name="box2_ToneChange3" Content="水晶" Selected="box2_ToneChange3_Checked" />
-                    <ComboBoxItem x:Name="box2_ToneChange4" Content="吉他"  Selected="box2_ToneChange4_Checked" />
-                    <ComboBoxItem x:Name="box2_ToneChange6" Content="小提琴"  Selected="box2_ToneChange6_Checked" />
-                    <ComboBoxItem x:Name="box2_ToneChange7" Content="长笛"  Selected="box2_ToneChange7_Checked" />
-                    <ComboBoxItem x:Name="box2_ToneChange8" Content="双簧管"  Selected="box2_ToneChange8_Checked" />
-                    <ComboBoxItem x:Name="box2_ToneChange9" Content="唢呐"  Selected="box2_ToneChange9_Checked" />
-                    <ComboBoxItem x:Name="box2_ToneChange5" Content="随机乐器"  Selected="box2_ToneChange5_Checked" />
+                    <ComboBoxItem x:Name="box2_ToneChange1" Content="Piano" Selected="box2_ToneChange1_Checked"   />
+                    <ComboBoxItem x:Name="box2_ToneChange2" Content="Organ"  Selected="box2_ToneChange2_Checked"  />
+                    <ComboBoxItem x:Name="box2_ToneChange3" Content="Crystal" Selected="box2_ToneChange3_Checked" />
+                    <ComboBoxItem x:Name="box2_ToneChange4" Content="Guitar"  Selected="box2_ToneChange4_Checked" />
+                    <ComboBoxItem x:Name="box2_ToneChange6" Content="Violin"  Selected="box2_ToneChange6_Checked" />
+                    <ComboBoxItem x:Name="box2_ToneChange7" Content="Flute"  Selected="box2_ToneChange7_Checked" />
+                    <ComboBoxItem x:Name="box2_ToneChange8" Content="Oboe"  Selected="box2_ToneChange8_Checked" />
+                    <ComboBoxItem x:Name="box2_ToneChange9" Content="Suona Horn"  Selected="box2_ToneChange9_Checked" />
+                    <ComboBoxItem x:Name="box2_ToneChange5" Content="Random"  Selected="box2_ToneChange5_Checked" />
                 </ComboBox>
                 <ComboBox x:Name="comboBox_ToneChange3"   SelectedIndex="0" HorizontalAlignment="Stretch" Height="50" Margin="0,1,0,0" VerticalAlignment="Top" Background="#66AAAAAA" BorderThickness="0" Style="{DynamicResource ComboBoxStyle1}" Foreground="#FFC8C7C8">
-                    <ComboBoxItem x:Name="box3_ToneChange1" Content="钢琴" Selected="box3_ToneChange1_Checked"   />
-                    <ComboBoxItem x:Name="box3_ToneChange2" Content="风琴"  Selected="box3_ToneChange1_Checked"  />
-                    <ComboBoxItem x:Name="box3_ToneChange3" Content="水晶" Selected="box3_ToneChange1_Checked" />
-                    <ComboBoxItem x:Name="box3_ToneChange4" Content="吉他"  Selected="box3_ToneChange1_Checked" />
-                    <ComboBoxItem x:Name="box3_ToneChange6" Content="小提琴"  Selected="box3_ToneChange6_Checked" />
-                    <ComboBoxItem x:Name="box3_ToneChange7" Content="长笛"  Selected="box3_ToneChange7_Checked" />
-                    <ComboBoxItem x:Name="box3_ToneChange8" Content="双簧管"  Selected="box3_ToneChange8_Checked" />
-                    <ComboBoxItem x:Name="box3_ToneChange9" Content="唢呐"  Selected="box3_ToneChange9_Checked" />
-                    <ComboBoxItem x:Name="box3_ToneChange5" Content="随机乐器"  Selected="box3_ToneChange1_Checked" />
+                    <ComboBoxItem x:Name="box3_ToneChange1" Content="Piano" Selected="box3_ToneChange1_Checked"   />
+                    <ComboBoxItem x:Name="box3_ToneChange2" Content="Organ"  Selected="box3_ToneChange1_Checked"  />
+                    <ComboBoxItem x:Name="box3_ToneChange3" Content="Crystal" Selected="box3_ToneChange1_Checked" />
+                    <ComboBoxItem x:Name="box3_ToneChange4" Content="Guitar"  Selected="box3_ToneChange1_Checked" />
+                    <ComboBoxItem x:Name="box3_ToneChange6" Content="Violin"  Selected="box3_ToneChange6_Checked" />
+                    <ComboBoxItem x:Name="box3_ToneChange7" Content="Flute"  Selected="box3_ToneChange7_Checked" />
+                    <ComboBoxItem x:Name="box3_ToneChange8" Content="Oboe"  Selected="box3_ToneChange8_Checked" />
+                    <ComboBoxItem x:Name="box3_ToneChange9" Content="Suona Horn"  Selected="box3_ToneChange9_Checked" />
+                    <ComboBoxItem x:Name="box3_ToneChange5" Content="Random"  Selected="box3_ToneChange1_Checked" />
                 </ComboBox>
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Height="auto" Grid.Column="2" Margin="2,54,2,-0.5" Grid.RowSpan="2">
-                <Label Height="25" Content="和弦" Foreground="#FFC8C7C8" Background="#FF6D6D6D"/>
+                <Label Height="25" Content="Chord" Foreground="#FFC8C7C8" Background="#FF6D6D6D"/>
                 <ComboBox x:Name="combobox_Duration"  Height="50"  BorderThickness="0" Margin ="0,1" SelectedIndex="2" Style="{DynamicResource ComboBoxStyle1}" Foreground="#FFC8C7C8" >
                     <ComboBoxItem x:Name="radioButton_Note0" Content="1/16" Selected="radioButton_Note0_Checked"  />
                     <ComboBoxItem x:Name="radioButton_Note1" Content="1/8"  Selected="radioButton_Note1_Checked"  />
@@ -1539,29 +1539,29 @@
 
 
                 <ComboBox x:Name="comboBox_piano"  SelectedIndex="0" HorizontalAlignment="Stretch" Height="50" Margin="0,1,0,0" VerticalAlignment="Top" Background="#66AAAAAA" BorderThickness="0" Style="{DynamicResource ComboBoxStyle1}" Foreground="#FFC8C7C8" >
-                    <ComboBoxItem x:Name="box1_Chord1" Content="正常的" Selected="box1_Chord1_Selected"  />
-                    <ComboBoxItem x:Name="box1_Chord2" Content="活跃的" Selected="box1_Chord2_Selected" />
-                    <ComboBoxItem x:Name="box1_Chord3" Content="深情的"  Selected="box1_Chord3_Selected"/>
-                    <ComboBoxItem x:Name="box1_Chord5" Content="壮丽的" Selected="box1_Chord5_Selected"/>
-                    <ComboBoxItem x:Name="box1_Chord6" Content="淘气的" Selected="box1_Chord6_Selected"/>
-                    <ComboBoxItem x:Name="box1_Chord4" Content="静音" Selected="box1_Chord4_Selected"/>
+                    <ComboBoxItem x:Name="box1_Chord1" Content="Normal" Selected="box1_Chord1_Selected"  />
+                    <ComboBoxItem x:Name="box1_Chord2" Content="Active" Selected="box1_Chord2_Selected" />
+                    <ComboBoxItem x:Name="box1_Chord3" Content="Deep"  Selected="box1_Chord3_Selected"/>
+                    <ComboBoxItem x:Name="box1_Chord5" Content="beautiful" Selected="box1_Chord5_Selected"/>
+                    <ComboBoxItem x:Name="box1_Chord6" Content="Naughty" Selected="box1_Chord6_Selected"/>
+                    <ComboBoxItem x:Name="box1_Chord4" Content="Mute" Selected="box1_Chord4_Selected"/>
                 </ComboBox>
                 <ComboBox x:Name="comboBox_piano2"  SelectedIndex="2" HorizontalAlignment="Stretch" Height="50" Margin="0,1,0,0" VerticalAlignment="Top" Background="#66AAAAAA" BorderThickness="0" Style="{DynamicResource ComboBoxStyle1}" Foreground="#FFC8C7C8" >
-                    <ComboBoxItem x:Name="box2_Chord1" Content="正常的" Selected="box2_Chord1_Selected"  />
-                    <ComboBoxItem x:Name="box2_Chord2" Content="活跃的" Selected="box2_Chord2_Selected" />
-                    <ComboBoxItem x:Name="box2_Chord3" Content="深情的"  Selected="box2_Chord3_Selected"/>
-                    <ComboBoxItem x:Name="box2_Chord5" Content="壮丽的" Selected="box2_Chord5_Selected"/>
-                    <ComboBoxItem x:Name="box2_Chord6" Content="淘气的" Selected="box2_Chord6_Selected"/>
-                    <ComboBoxItem x:Name="box2_Chord4" Content="静音" Selected="box2_Chord4_Selected"/>
+                    <ComboBoxItem x:Name="box2_Chord1" Content="Normal" Selected="box2_Chord1_Selected"  />
+                    <ComboBoxItem x:Name="box2_Chord2" Content="Active" Selected="box2_Chord2_Selected" />
+                    <ComboBoxItem x:Name="box2_Chord3" Content="Deep"  Selected="box2_Chord3_Selected"/>
+                    <ComboBoxItem x:Name="box2_Chord5" Content="beautiful" Selected="box2_Chord5_Selected"/>
+                    <ComboBoxItem x:Name="box2_Chord6" Content="Naughty" Selected="box2_Chord6_Selected"/>
+                    <ComboBoxItem x:Name="box2_Chord4" Content="Mute" Selected="box2_Chord4_Selected"/>
                 </ComboBox>
                 <ComboBox x:Name="comboBox_String"   SelectedIndex="5" HorizontalAlignment="Stretch" Height="50" Margin="0,1,0,0" VerticalAlignment="Top" Background="#66AAAAAA" BorderThickness="0" Style="{DynamicResource ComboBoxStyle1}" Foreground="#FFC8C7C8">
-                    <ComboBoxItem x:Name="box3_Chord1" Content="正常的" Selected="box3_Chord1_Selected"  />
-                    <ComboBoxItem x:Name="box3_Chord2" Content="活跃的" Selected="box3_Chord2_Selected" />
-                    <ComboBoxItem x:Name="box3_Chord3" Content="深情的" Selected="box3_Chord3_Selected"/>
-                    <ComboBoxItem x:Name="box3_Chord5" Content="壮丽的" Selected="box3_Chord5_Selected"/>
-                    <ComboBoxItem x:Name="box3_Chord6" Content="淘气的" Selected="box3_Chord6_Selected"/>
+                    <ComboBoxItem x:Name="box3_Chord1" Content="Normal" Selected="box3_Chord1_Selected"  />
+                    <ComboBoxItem x:Name="box3_Chord2" Content="Active" Selected="box3_Chord2_Selected" />
+                    <ComboBoxItem x:Name="box3_Chord3" Content="Deep" Selected="box3_Chord3_Selected"/>
+                    <ComboBoxItem x:Name="box3_Chord5" Content="beautiful" Selected="box3_Chord5_Selected"/>
+                    <ComboBoxItem x:Name="box3_Chord6" Content="Naughty" Selected="box3_Chord6_Selected"/>
 
-                    <ComboBoxItem x:Name="box3_Chord4" Content="静音" Selected="box3_Chord4_Selected"/>
+                    <ComboBoxItem x:Name="box3_Chord4" Content="Mute" Selected="box3_Chord4_Selected"/>
                 </ComboBox>
             </StackPanel>
         </Grid>
@@ -1625,49 +1625,49 @@
 
                 <Button Grid.Row="0" Grid.Column="0" Content="Play"  BorderThickness="0" FontFamily="MV Boli" Background="#FFECEBEB" />
                 <ComboBox  Grid.Row="1" Grid.Column="0" Height="70"  BorderThickness="0"  SelectedIndex="0" >
-                    <ComboBoxItem x:Name="box00_ToneChange1" Content="钢琴" Selected="box0_ToneChange1_Checked"   />
-                    <ComboBoxItem x:Name="box00_ToneChange2" Content="风琴"  Selected="box0_ToneChange2_Checked"  />
-                    <ComboBoxItem x:Name="box00_ToneChange3" Content="水晶" Selected="box0_ToneChange3_Checked" />
-                    <ComboBoxItem x:Name="box00_ToneChange4" Content="吉他"  Selected="box0_ToneChange4_Checked" />
-                    <ComboBoxItem x:Name="box00_ToneChange7" Content="小提琴"  Selected="box0_ToneChange7_Checked" />
-                    <ComboBoxItem x:Name="box00_ToneChange8" Content="长笛"  Selected="box0_ToneChange8_Checked" />
-                    <ComboBoxItem x:Name="box00_ToneChange9" Content="双簧管"  Selected="box0_ToneChange9_Checked" />
-                    <ComboBoxItem x:Name="box00_ToneChange10" Content="唢呐"  Selected="box0_ToneChange10_Checked" />
-                    <ComboBoxItem x:Name="box00_ToneChange5" Content="随机乐器"  Selected="box0_ToneChange5_Checked" />
-                    <ComboBoxItem x:Name="box00_ToneChange6" Content="静音"  Selected="box0_ToneChange6_Checked" />
+                    <ComboBoxItem x:Name="box00_ToneChange1" Content="Piano" Selected="box0_ToneChange1_Checked"   />
+                    <ComboBoxItem x:Name="box00_ToneChange2" Content="Organ"  Selected="box0_ToneChange2_Checked"  />
+                    <ComboBoxItem x:Name="box00_ToneChange3" Content="Crystal" Selected="box0_ToneChange3_Checked" />
+                    <ComboBoxItem x:Name="box00_ToneChange4" Content="Guitar"  Selected="box0_ToneChange4_Checked" />
+                    <ComboBoxItem x:Name="box00_ToneChange7" Content="Violin"  Selected="box0_ToneChange7_Checked" />
+                    <ComboBoxItem x:Name="box00_ToneChange8" Content="Flute"  Selected="box0_ToneChange8_Checked" />
+                    <ComboBoxItem x:Name="box00_ToneChange9" Content="Oboe"  Selected="box0_ToneChange9_Checked" />
+                    <ComboBoxItem x:Name="box00_ToneChange10" Content="Suona Horn"  Selected="box0_ToneChange10_Checked" />
+                    <ComboBoxItem x:Name="box00_ToneChange5" Content="Random"  Selected="box0_ToneChange5_Checked" />
+                    <ComboBoxItem x:Name="box00_ToneChange6" Content="Mute"  Selected="box0_ToneChange6_Checked" />
                 </ComboBox>
                 <ComboBox x:Name="comboBox_ToneChange11"  Grid.Row="2" Grid.Column="0"  SelectedIndex="0" HorizontalAlignment="Stretch" Height="70" Margin="0,1,0.333,0" VerticalAlignment="Top" Background="#66AAAAAA" BorderThickness="0"  >
-                    <ComboBoxItem x:Name="box11_ToneChange1" Content="钢琴" Selected="box1_ToneChange1_Checked"   />
-                    <ComboBoxItem x:Name="box11_ToneChange2" Content="风琴" Selected="box1_ToneChange2_Checked"  />
-                    <ComboBoxItem x:Name="box11_ToneChange3" Content="水晶" Selected="box1_ToneChange3_Checked" />
-                    <ComboBoxItem x:Name="box11_ToneChange4" Content="吉他"  Selected="box1_ToneChange4_Checked" />
-                    <ComboBoxItem x:Name="box11_ToneChange6" Content="小提琴"  Selected="box1_ToneChange6_Checked" />
-                    <ComboBoxItem x:Name="box11_ToneChange7" Content="长笛"  Selected="box1_ToneChange7_Checked" />
-                    <ComboBoxItem x:Name="box11_ToneChange8" Content="双簧管"  Selected="box1_ToneChange8_Checked" />
-                    <ComboBoxItem x:Name="box11_ToneChange9" Content="唢呐"  Selected="box1_ToneChange9_Checked" />
-                    <ComboBoxItem x:Name="box11_ToneChange5" Content="随机乐器"  Selected="box1_ToneChange5_Checked" />
+                    <ComboBoxItem x:Name="box11_ToneChange1" Content="Piano" Selected="box1_ToneChange1_Checked"   />
+                    <ComboBoxItem x:Name="box11_ToneChange2" Content="Organ" Selected="box1_ToneChange2_Checked"  />
+                    <ComboBoxItem x:Name="box11_ToneChange3" Content="Crystal" Selected="box1_ToneChange3_Checked" />
+                    <ComboBoxItem x:Name="box11_ToneChange4" Content="Guitar"  Selected="box1_ToneChange4_Checked" />
+                    <ComboBoxItem x:Name="box11_ToneChange6" Content="Violin"  Selected="box1_ToneChange6_Checked" />
+                    <ComboBoxItem x:Name="box11_ToneChange7" Content="Flute"  Selected="box1_ToneChange7_Checked" />
+                    <ComboBoxItem x:Name="box11_ToneChange8" Content="Oboe"  Selected="box1_ToneChange8_Checked" />
+                    <ComboBoxItem x:Name="box11_ToneChange9" Content="Suona Horn"  Selected="box1_ToneChange9_Checked" />
+                    <ComboBoxItem x:Name="box11_ToneChange5" Content="Random"  Selected="box1_ToneChange5_Checked" />
                 </ComboBox>
                 <ComboBox x:Name="comboBox_ToneChange22"  Grid.Row="3" Grid.Column="0"  SelectedIndex="0" HorizontalAlignment="Stretch" Height="70" Margin="0,1,0.333,0" VerticalAlignment="Top"  BorderThickness="0" >
-                    <ComboBoxItem x:Name="box22_ToneChange1" Content="钢琴" Selected="box2_ToneChange1_Checked"   />
-                    <ComboBoxItem x:Name="box22_ToneChange2" Content="风琴"  Selected="box2_ToneChange2_Checked"  />
-                    <ComboBoxItem x:Name="box22_ToneChange3" Content="水晶" Selected="box2_ToneChange3_Checked" />
-                    <ComboBoxItem x:Name="box22_ToneChange4" Content="吉他"  Selected="box2_ToneChange4_Checked" />
-                    <ComboBoxItem x:Name="box22_ToneChange6" Content="小提琴"  Selected="box2_ToneChange6_Checked" />
-                    <ComboBoxItem x:Name="box22_ToneChange7" Content="长笛"  Selected="box2_ToneChange7_Checked" />
-                    <ComboBoxItem x:Name="box22_ToneChange8" Content="双簧管"  Selected="box2_ToneChange8_Checked" />
-                    <ComboBoxItem x:Name="box22_ToneChange9" Content="唢呐"  Selected="box2_ToneChange9_Checked" />
-                    <ComboBoxItem x:Name="box22_ToneChange5" Content="随机乐器"  Selected="box2_ToneChange5_Checked" />
+                    <ComboBoxItem x:Name="box22_ToneChange1" Content="Piano" Selected="box2_ToneChange1_Checked"   />
+                    <ComboBoxItem x:Name="box22_ToneChange2" Content="Organ"  Selected="box2_ToneChange2_Checked"  />
+                    <ComboBoxItem x:Name="box22_ToneChange3" Content="Crystal" Selected="box2_ToneChange3_Checked" />
+                    <ComboBoxItem x:Name="box22_ToneChange4" Content="Guitar"  Selected="box2_ToneChange4_Checked" />
+                    <ComboBoxItem x:Name="box22_ToneChange6" Content="Violin"  Selected="box2_ToneChange6_Checked" />
+                    <ComboBoxItem x:Name="box22_ToneChange7" Content="Flute"  Selected="box2_ToneChange7_Checked" />
+                    <ComboBoxItem x:Name="box22_ToneChange8" Content="Oboe"  Selected="box2_ToneChange8_Checked" />
+                    <ComboBoxItem x:Name="box22_ToneChange9" Content="Suona Horn"  Selected="box2_ToneChange9_Checked" />
+                    <ComboBoxItem x:Name="box22_ToneChange5" Content="Random"  Selected="box2_ToneChange5_Checked" />
                 </ComboBox>
                 <ComboBox x:Name="comboBox_ToneChange33"  Grid.Row="4" Grid.Column="0"   SelectedIndex="0" HorizontalAlignment="Stretch" Height="70" Margin="0,1,0.333,0" VerticalAlignment="Top" Background="#66AAAAAA" BorderThickness="0">
-                    <ComboBoxItem x:Name="box33_ToneChange1" Content="钢琴" Selected="box3_ToneChange1_Checked"   />
-                    <ComboBoxItem x:Name="box33_ToneChange2" Content="风琴"  Selected="box3_ToneChange1_Checked"  />
-                    <ComboBoxItem x:Name="box33_ToneChange3" Content="水晶" Selected="box3_ToneChange1_Checked" />
-                    <ComboBoxItem x:Name="box33_ToneChange4" Content="吉他"  Selected="box3_ToneChange1_Checked" />
-                    <ComboBoxItem x:Name="box33_ToneChange6" Content="小提琴"  Selected="box3_ToneChange6_Checked" />
-                    <ComboBoxItem x:Name="box33_ToneChange7" Content="长笛"  Selected="box3_ToneChange7_Checked" />
-                    <ComboBoxItem x:Name="box33_ToneChange8" Content="双簧管"  Selected="box3_ToneChange8_Checked" />
-                    <ComboBoxItem x:Name="box33_ToneChange9" Content="唢呐"  Selected="box3_ToneChange9_Checked" />
-                    <ComboBoxItem x:Name="box33_ToneChange5" Content="随机乐器"  Selected="box3_ToneChange1_Checked" />
+                    <ComboBoxItem x:Name="box33_ToneChange1" Content="Piano" Selected="box3_ToneChange1_Checked"   />
+                    <ComboBoxItem x:Name="box33_ToneChange2" Content="Organ"  Selected="box3_ToneChange1_Checked"  />
+                    <ComboBoxItem x:Name="box33_ToneChange3" Content="Crystal" Selected="box3_ToneChange1_Checked" />
+                    <ComboBoxItem x:Name="box33_ToneChange4" Content="Guitar"  Selected="box3_ToneChange1_Checked" />
+                    <ComboBoxItem x:Name="box33_ToneChange6" Content="Violin"  Selected="box3_ToneChange6_Checked" />
+                    <ComboBoxItem x:Name="box33_ToneChange7" Content="Flute"  Selected="box3_ToneChange7_Checked" />
+                    <ComboBoxItem x:Name="box33_ToneChange8" Content="Oboe"  Selected="box3_ToneChange8_Checked" />
+                    <ComboBoxItem x:Name="box33_ToneChange9" Content="Suona Horn"  Selected="box3_ToneChange9_Checked" />
+                    <ComboBoxItem x:Name="box33_ToneChange5" Content="Random"  Selected="box3_ToneChange1_Checked" />
                 </ComboBox>
                 <Button  Grid.Row="6" Grid.Column="0"  Content="!"  Height="50" Click="Button_Click" BorderThickness="0" FontFamily="Wingdings" FontSize="24"></Button>
 
@@ -1766,7 +1766,7 @@
                 </Grid.RowDefinitions>
                 <Button x:Name="appBarButton_chordCreate2" Grid.Row="0"  Content ="MM" Click="appBarButton_Smart_Click" Style="{DynamicResource ButtonStyle1}" Foreground="#FFC8C7C8" BorderThickness="0" Margin="0,-5,0,5" d:LayoutOverrides="Width" />
 
-                <Button x:Name="appBarButton_delete" Grid.Row="1"  Content="x"  Click="appBarButton_Delete_Click"  BorderThickness="0"   Style="{DynamicResource ButtonStyle1}" Foreground="#FFC8C7C8" d:LayoutOverrides="Width" FontFamily="Wingdings" FontSize="26.667" />
+                <Button x:Name="appBarButton_delete"  Content="x"  Click="appBarButton_Delete_Click"  BorderThickness="0"   Style="{DynamicResource ButtonStyle1}" Foreground="#FFC8C7C8" FontFamily="Wingdings" FontSize="26.667" Margin="0,71,0.333,0" Grid.RowSpan="2" />
                 <Button x:Name="button_Rest" Content ="n" Grid.Row="2"  BorderThickness="0" Style="{DynamicResource ButtonStyle1}" Foreground="#FFC8C7C8" Click="Button_Rest_Click" d:LayoutOverrides="Width" FontFamily="Wingdings" FontSize="26.667" />
 
             </Grid>
@@ -1830,11 +1830,11 @@
                 <RowDefinition Height="139*"/>
                 <RowDefinition Height="33*"/>
             </Grid.RowDefinitions>
-            <Label x:Name="label1"  Content="曲库" Foreground="#FFC8C7C8" Grid.ColumnSpan="3" Background="#FF6D6D6D" Margin="0,0,4,3"/>
+            <Label x:Name="label1"  Content="Music Lib" Foreground="#FFC8C7C8" Grid.ColumnSpan="3" Background="#FF6D6D6D" Margin="0,0,4,3"/>
             <ListView x:Name="listView" Background="#FF383838" Grid.ColumnSpan="3" BorderBrush="{x:Null}" Foreground="#FFC8C7C8" MouseDoubleClick="listView_MouseDoubleClick" Grid.Row="1" Margin="0,0,0,32" Grid.RowSpan="2"/>
-            <Button x:Name="button_FileSave" Content="保存" Margin="10,10.5,10,6" Grid.Row="2" Style="{DynamicResource ButtonStyle1}" Foreground="#FFC8C7C8" FontSize="9.333" BorderThickness="0" Click="button_FileSave_Click_1"/>
-            <Button x:Name="button_FileRead" Content="读取" Margin="10,10.5,8,6" Grid.Column="1" Grid.Row="2" Style="{DynamicResource ButtonStyle1}" Foreground="#FFC8C7C8" FontSize="9.333" BorderThickness="0" Click="button_FileRead_Click"/>
-            <Button x:Name="button_FileDelete" Content="删除" Margin="10,10.5,10,6" Grid.Column="2" Grid.Row="2" Style="{DynamicResource ButtonStyle1}" Foreground="#FFC8C7C8" FontSize="9.333" BorderThickness="0" Click="button_FileDelete_Click"/>
+            <Button x:Name="button_FileSave" Content="Save" Margin="10,10.5,10,6" Grid.Row="2" Style="{DynamicResource ButtonStyle1}" Foreground="#FFC8C7C8" FontSize="9.333" BorderThickness="0" Click="button_FileSave_Click_1"/>
+            <Button x:Name="button_FileRead" Content="Read" Margin="10,10.5,8,6" Grid.Column="1" Grid.Row="2" Style="{DynamicResource ButtonStyle1}" Foreground="#FFC8C7C8" FontSize="9.333" BorderThickness="0" Click="button_FileRead_Click"/>
+            <Button x:Name="button_FileDelete" Content="Delete" Margin="10,10.5,10,6" Grid.Column="2" Grid.Row="2" Style="{DynamicResource ButtonStyle1}" Foreground="#FFC8C7C8" FontSize="9.333" BorderThickness="0" Click="button_FileDelete_Click"/>
             <Grid  Grid.Column="1" HorizontalAlignment="Right" Height="100" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
             <TextBlock x:Name="label1_Copy" Visibility="Hidden" TextAlignment="Center"  Text="曲库" Foreground="#FFC8C7C8" Grid.ColumnSpan="3" Background="#FF6D6D6D" Margin="0,0,1.5,2" d:IsHidden="True"/>
         </Grid>

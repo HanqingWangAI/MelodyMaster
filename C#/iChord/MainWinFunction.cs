@@ -216,7 +216,7 @@ namespace iChord
             setChord(chord);
         }
 
-        public void smartChord()
+        public async Task smartChord()
         {
             string myStr = inputMainMelody = textBlock_main.Text.Replace(",", "");
             textBlock_main.Text = NoteInput.devideBar(myStr);

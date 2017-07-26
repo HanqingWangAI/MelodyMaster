@@ -37,7 +37,7 @@ namespace iChord
                 string[] allPaths = pathVariable.Split(';');
                 foreach (var path in allPaths)
                 {
-                    string pythonPathFromEnv = path + "\\python3.exe";
+                    string pythonPathFromEnv = path + "\\python.exe";
                     if (File.Exists(pythonPathFromEnv))
                         return pythonPathFromEnv;
                 }

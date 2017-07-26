@@ -168,7 +168,7 @@ sess = 0
 logits = 0
 X = 0
 preY = 0
-def restore():
+def restore(time_step):
     global X
     global preY
     X=tf.placeholder(tf.float32, shape=[None,time_step,input_size])
@@ -181,7 +181,7 @@ def restore():
     saver = tf.train.Saver(tf.global_variables())
     global sess
     sess = tf.Session()
-    saver.restore(sess, 'C:/Users/v-donye/Desktop/New folder/MelodyMaster/src/utils/Melody.model-2000')
+    saver.restore(sess, 'C:/Users/v-donye/Desktop/New folder/MelodyMaster/src/utils/Melody.model-100000')
     #print('Restore success')
 
 
@@ -200,9 +200,9 @@ def predict(key_feature,pre_Y):
     prediction = sess.run([logits],feed_dict={X:key_feature,preY:pre_Y})
     return prediction
 
-def predictId(key_feature,pre_Y,first):
+def predictId(key_feature,pre_Y,times,first):
     if first:
-        restore()
+        restore(times)
     output = predict(key_feature,pre_Y)[0]
     translator = ChordTranslator.ChordTranslator()
     outlist = []

@@ -1,13 +1,13 @@
 import sys
 import NoteTranslator
 import StdScore
-import test
+import test_mul
 # sys.argv is the list of command line arguments passed to the python script
 #score = arg1
 MelodyMaster = NoteTranslator.NoteTranslator()
 line = sys.argv[1]
 PraxisSucks=MelodyMaster.fw_run(line)
-# with open("test.icd",'r') as f:
+# with open("testsb.icd",'r') as f:
 # 	line = f.readline()
 # 	bars = line.strip().split(',')
 # 	score = []
@@ -23,10 +23,10 @@ keyFeature = score.getKeyFeature()
 times = len(keyFeature)
 preY = []
 for i in range(times):
-	preY.append([0 for _ in range(test.class_num)])
+	preY.append([0 for _ in range(test_mul.output_size)])
 output = []
 for i in range(times):
-	output_i, feature_i = test.predictId([keyFeature],[preY],times,i==0)
+	output_i, feature_i = test_mul.predictId([keyFeature],[preY],times,i==0)
 	output.append(output_i[i])
 	if i+1 < times:
 		preY[i+1] = feature_i[i]

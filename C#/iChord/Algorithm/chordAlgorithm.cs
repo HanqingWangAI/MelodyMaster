@@ -309,8 +309,8 @@ namespace iChord
             //if (splitedStr[i] != "")//防止出现  最后一个和弦（split函数多余出来的）对应的旋律是空的
             //    outStr += chordFeedback(originTohandle(splitedStr[i++])) + " ";
 
-            int i = inStr.Split(',').Length;
-            //int i = 0;
+            //int i = inStr.Split(',').Length;
+            int i = 0;
             //最后两个和弦为 G C
             if (i > 3)//有4个和弦时
             {

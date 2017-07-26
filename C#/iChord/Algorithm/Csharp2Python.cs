@@ -37,7 +37,7 @@ namespace iChord
                 string[] allPaths = pathVariable.Split(';');
                 foreach (var path in allPaths)
                 {
-                    string pythonPathFromEnv = path + "\\python.exe";
+                    string pythonPathFromEnv = path + "\\python3.exe";
                     if (File.Exists(pythonPathFromEnv))
                         return pythonPathFromEnv;
                 }
@@ -47,7 +47,8 @@ namespace iChord
 
         public Csharp2Python(string python = @"D:\Programs\Python27", string myPythonApp = @".\..\..\..\..\src\utils\RNN.py")
         {
-            Python = Path.Combine(python, "python.exe");
+            //Python = Path.Combine(python, "python.exe");
+            Python = GetPythonPath();
             MyPythonApp = myPythonApp;
         }
 

@@ -307,18 +307,18 @@ namespace iChord
         {
             string outStr = "";
             //outStr = cnnFunction();
-            // var RNN = new Csharp2Python();
-            // outStr = RNN.run(inStr);
+            var RNN = new Csharp2Python();
+            outStr = RNN.run(inStr);
 
             // var RNN = new Csharp2Python("10.172.150.34");
-            MainWindow.client.SendMsg(inStr);
-            while (true)
-            {
-                Package pac = MainWindow.client.FetchRequest();
-                if (pac == null) continue;
-                outStr = Encoding.UTF8.GetString(pac.Msg);
-                break;
-            }
+            //MainWindow.client.SendMsg(inStr);
+            //while (true)
+            //{
+            //    Package pac = MainWindow.client.FetchRequest();
+            //    if (pac == null) continue;
+            //    outStr = Encoding.UTF8.GetString(pac.Msg);
+            //    break;
+            //}
                 //var outStrNet =  RNN.connectServer(inStr);
             //MessageBox.Show(outStrNet);
             

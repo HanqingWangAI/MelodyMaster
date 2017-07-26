@@ -30,8 +30,8 @@ namespace iChord
         public static Client client;
         public MainWindow()
         {
-            client = new Client("10.172.150.34", 10010);
-            client.Start();
+            //client = new Client("10.172.150.34", 10010);
+            //client.Start();
             mainInit();
             InitializeComponent();
             initOthers();

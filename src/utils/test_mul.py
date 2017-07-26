@@ -181,7 +181,7 @@ def restore(time_step):
     saver = tf.train.Saver(tf.global_variables())
     global sess
     sess = tf.Session()
-    saver.restore(sess, 'C:/Users/v-donye/Desktop/New folder/MelodyMaster/src/utils/Melody.model-100000')
+    saver.restore(sess, './../../../../src/utils/Melody.model-100000')
     #print('Restore success')
 
 

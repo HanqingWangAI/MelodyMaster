@@ -1,6 +1,3 @@
-C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\bin\Debug\iChord.exe.config
-C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\bin\Debug\iChord.exe
-C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\bin\Debug\iChord.pdb
 C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\bin\Debug\Microsoft.Dynamic.dll
 C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\bin\Debug\Microsoft.Expression.Drawing.dll
 C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\bin\Debug\Microsoft.Scripting.AspNet.dll
@@ -27,16 +24,11 @@ C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\MainWindow.g.
 C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\Window_RealPlay.g.cs
 C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\App.g.cs
 C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\iChord_MarkupCompile.cache
-C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\iChord_MarkupCompile.lref
 C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\combobox_Chord.baml
 C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\MainWindow.baml
 C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\Window_RealPlay.baml
-C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\iChord.g.resources
 C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\iChord.Properties.Resources.resources
 C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\iChord.csproj.GenerateResource.Cache
-C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\iChord.exe
-C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\iChord.pdb
 C:\Users\v-donye\Desktop\New folder\MelodyMaster\C#\iChord\bin\Debug\iChord.exe.config
 C:\Users\v-donye\Desktop\New folder\MelodyMaster\C#\iChord\obj\Debug\Interop.SpeechLib.dll
 C:\Users\v-donye\Desktop\New folder\MelodyMaster\C#\iChord\obj\Debug\iChord.csproj.ResolveComReference.cache
@@ -76,3 +68,11 @@ C:\Users\v-donye\Desktop\New folder\MelodyMaster\C#\iChord\obj\Debug\Window_Real
 C:\Users\v-donye\Desktop\New folder\MelodyMaster\C#\iChord\obj\Debug\iChord.g.resources
 C:\Users\v-donye\Desktop\New folder\MelodyMaster\C#\iChord\obj\Debug\iChord.Properties.Resources.resources
 C:\Users\v-donye\Desktop\New folder\MelodyMaster\C#\iChord\obj\Debug\iChord.csproj.GenerateResource.Cache
+C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\bin\Debug\MelodyMaster.exe.config
+C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\bin\Debug\MelodyMaster.exe
+C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\bin\Debug\MelodyMaster.pdb
+C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\MelodyMaster_MarkupCompile.cache
+C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\MelodyMaster_MarkupCompile.lref
+C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\MelodyMaster.g.resources
+C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\MelodyMaster.exe
+C:\Users\v-zhou\Desktop\Hackathon\MelodyMaster\C#\iChord\obj\Debug\MelodyMaster.pdb

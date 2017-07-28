@@ -404,7 +404,7 @@ namespace iChord {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/iChord;component/window_realplay.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MelodyMaster;component/window_realplay.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\Window_RealPlay.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

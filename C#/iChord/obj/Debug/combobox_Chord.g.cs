@@ -61,7 +61,7 @@ namespace iChord {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/iChord;component/combobox_chord.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MelodyMaster;component/combobox_chord.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\combobox_Chord.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -1,4 +1,0 @@
-model_checkpoint_path: "Melody.model-2000"
-all_model_checkpoint_paths: "Melody.model-0"
-all_model_checkpoint_paths: "Melody.model-1000"
-all_model_checkpoint_paths: "Melody.model-2000"
